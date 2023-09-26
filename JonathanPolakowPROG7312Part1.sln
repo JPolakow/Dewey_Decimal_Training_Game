@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JonathanPolakowPROG7312Part1", "JonathanPolakowPROG7312Part1\JonathanPolakowPROG7312Part1.csproj", "{9C211F92-85C3-4770-B067-929D017CD1F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeweyDecimalLibrary", "DeweyDecimalLibrary\DeweyDecimalLibrary.csproj", "{A22A7AEF-793B-44F9-A891-6D91220D2833}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C211F92-85C3-4770-B067-929D017CD1F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C211F92-85C3-4770-B067-929D017CD1F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C211F92-85C3-4770-B067-929D017CD1F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C211F92-85C3-4770-B067-929D017CD1F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A22A7AEF-793B-44F9-A891-6D91220D2833}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A22A7AEF-793B-44F9-A891-6D91220D2833}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A22A7AEF-793B-44F9-A891-6D91220D2833}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A22A7AEF-793B-44F9-A891-6D91220D2833}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A784E33-AD35-456D-823D-DB52DA2093F7}
+	EndGlobalSection
+EndGlobal
