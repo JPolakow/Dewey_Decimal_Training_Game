@@ -42,14 +42,22 @@ namespace JonathanPolakowPROG7312Part1
       /// <param name="timeLimit"></param>
       private void LoadPlaceBooks(int timeLimit)
       {
-         //bookShelf1 is located in the designer code
-         bookShelf1 = new BookShelf(timeLimit);
-         bookShelf1.Left = (this.ClientSize.Width - bookShelf1.Width) / 2;
-         bookShelf1.Top = (this.ClientSize.Height - bookShelf1.Height) / 2;
-         pnlPlaceBooks.Controls.Add(bookShelf1);
+         try
+         {
+            //bookShelf1 is located in the designer code
+            bookShelf1 = new BookShelf(timeLimit);
+            bookShelf1.Left = (this.ClientSize.Width - bookShelf1.Width) / 2;
+            bookShelf1.Top = (this.ClientSize.Height - bookShelf1.Height) / 2;
+            pnlPlaceBooks.Controls.Add(bookShelf1);
 
-         pnlChooseDifficulty.Visible = false;
-         pnlPlaceBooks.Visible = true;
+            pnlChooseDifficulty.Visible = false;
+            pnlPlaceBooks.Visible = true;
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+            MessageBox.Show("Oops, something went wrong, please try again");
+         }
       }
 
       //-------------------------------------------------------------------------------------------
@@ -58,13 +66,21 @@ namespace JonathanPolakowPROG7312Part1
       /// </summary>
       public void CloseUserControl()
       {
-         pnlPlaceBooks.Controls.Clear();
-         pnlAwards.Visible = false;
-         pnlChooseDifficulty.Visible = false;
-         pnlMenu.Visible = true;
-         pnlPlaceBooks.Visible = false;
+         try
+         {
+            pnlPlaceBooks.Controls.Clear();
+            pnlAwards.Visible = false;
+            pnlChooseDifficulty.Visible = false;
+            pnlMenu.Visible = true;
+            pnlPlaceBooks.Visible = false;
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+            MessageBox.Show("Oops, something went wrong, please try again");
+         }
       }
-      
+
       //-------------------------------------------------------------------------------------------
       /// <summary>
       /// btnPlaceBooks_Click, calls the place book panel
@@ -152,3 +168,6 @@ namespace JonathanPolakowPROG7312Part1
    }
 }
 //-----------------------------------------END OF FILE---------------------------------------------
+
+//to do
+//error handeling

@@ -310,11 +310,11 @@
          // 
          this.lblCountdown.AutoSize = true;
          this.lblCountdown.BackColor = System.Drawing.Color.Transparent;
-         this.lblCountdown.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.lblCountdown.Font = new System.Drawing.Font("Monotype Corsiva", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.lblCountdown.ForeColor = System.Drawing.SystemColors.ControlLight;
          this.lblCountdown.Location = new System.Drawing.Point(660, 41);
          this.lblCountdown.Name = "lblCountdown";
-         this.lblCountdown.Size = new System.Drawing.Size(22, 18);
+         this.lblCountdown.Size = new System.Drawing.Size(32, 26);
          this.lblCountdown.TabIndex = 32;
          this.lblCountdown.Text = "90";
          this.lblCountdown.Visible = false;

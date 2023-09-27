@@ -49,6 +49,7 @@ namespace JonathanPolakowPROG7312Part1
             case 15: //hard
                Hard(time);
                break;
+            default: break;
          }
       }
 

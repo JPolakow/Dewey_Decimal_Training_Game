@@ -76,38 +76,47 @@ namespace JonathanPolakowPROG7312Part1
       /// </summary>
       private void FilterPanelsIntoLists()
       {
-         //for every panel in the Control (in this case a userControl)
-         //every System.Windows.Forms.Panel found
-         //the in Controls.OfType is from ChatGPT
-         foreach (Panel panel in Controls.OfType<Panel>())
+         try
          {
-            if (panel.Name.Contains("Book"))
+            //for every panel in the Control (in this case a userControl)
+            //every System.Windows.Forms.Panel found
+            //the in Controls.OfType is from ChatGPT
+            foreach (Panel panel in Controls.OfType<Panel>())
             {
-               Books.Add(panel);
-               ControlExtension.Draggable(panel, true);
-               panel.MouseDown += Panel_MouseDown;
-               panel.MouseUp += Panel_MouseUp;
-               panel.BackColor = RandomBrightColor();
+               if (panel.Name.Contains("Book"))
+               {
+                  Books.Add(panel);
+                  ControlExtension.Draggable(panel, true);
+                  panel.MouseDown += Panel_MouseDown;
+                  panel.MouseUp += Panel_MouseUp;
+                  panel.BackColor = RandomBrightColor();
+               }
+
+               if (panel.Name.Contains("Top"))
+               {
+                  TopShelves.Add(panel);
+                  RemainingShelves.Add(panel);
+                  panel.Visible = false;
+               }
+
+               if (panel.Name.Contains("Bottom"))
+               {
+                  BottomShelves.Add(panel);
+                  RemainingShelves.Add(panel);
+                  panel.Visible = false;
+               }
             }
 
-            if (panel.Name.Contains("Top"))
-            {
-               TopShelves.Add(panel);
-               RemainingShelves.Add(panel);
-               panel.Visible = false;
-            }
-
-            if (panel.Name.Contains("Bottom"))
-            {
-               BottomShelves.Add(panel);
-               RemainingShelves.Add(panel);
-               panel.Visible = false;
-            }
+            Books = Books.OrderBy(panel => panel.Name).ToList();
+            TopShelves = TopShelves.OrderBy(panel => panel.Name).ToList();
+            BottomShelves = BottomShelves.OrderBy(panel => panel.Name).ToList();
          }
-
-         Books = Books.OrderBy(panel => panel.Name).ToList();
-         TopShelves = TopShelves.OrderBy(panel => panel.Name).ToList();
-         BottomShelves = BottomShelves.OrderBy(panel => panel.Name).ToList();
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+            MessageBox.Show("Oops, something went wrong, please try again");
+            BackToMenu();
+         }
       }
 
       //-------------------------------------------------------------------------------------------
@@ -116,15 +125,24 @@ namespace JonathanPolakowPROG7312Part1
       /// </summary>
       private void StartGame()
       {
-         tmrCountdown = new System.Windows.Forms.Timer();
-         tmrCountdown.Tick += new EventHandler(tmrCountdown_Tick);
-         tmrCountdown.Interval = 1000; // 1 second
-
-         if (timeLimit > 0)
+         try
          {
-            tmrCountdown.Start();
-            lblCountdown.Text = timeLimit.ToString();
-            lblCountdown.Visible = true;
+            tmrCountdown = new System.Windows.Forms.Timer();
+            tmrCountdown.Tick += new EventHandler(tmrCountdown_Tick);
+            tmrCountdown.Interval = 1000; // 1 second
+
+            if (timeLimit > 0)
+            {
+               tmrCountdown.Start();
+               lblCountdown.Text = timeLimit.ToString();
+               lblCountdown.Visible = true;
+            }
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+            MessageBox.Show("Oops, something went wrong, please try again");
+            BackToMenu();
          }
       }
 
@@ -136,23 +154,30 @@ namespace JonathanPolakowPROG7312Part1
       /// <param name="e"></param>
       private void tmrCountdown_Tick(object sender, EventArgs e)
       {
-         countDown--;
-
-         if (countDown == 0)
+         try
          {
-            tmrCountdown.Enabled = false;
-            tmrCountdown.Stop();
+            countDown--;
 
-            if (CheckOrder())
+            if (countDown == 0)
             {
+               tmrCountdown.Enabled = false;
+               tmrCountdown.Stop();
+
+               if (CheckOrder())
+               {
+               }
+               else
+               {
+                  Fail();
+               }
             }
-            else
-            {
-               Fail();
-            }
+
+            lblCountdown.Text = countDown.ToString();
          }
-
-         lblCountdown.Text = countDown.ToString();
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+         }
       }
 
       //-------------------------------------------------------------------------------------------
@@ -163,19 +188,27 @@ namespace JonathanPolakowPROG7312Part1
       /// <param name="e"></param>
       private void Panel_MouseDown(object sender, MouseEventArgs e)
       {
-         ControlExtension.Draggable((Panel)sender, true);
-
-         //add the black where the book just was back to the list of where panels can go
-         //this allows it to be placed back
-         List<Panel> AllShelves = new List<Panel>(TopShelves);
-         AllShelves.AddRange(BottomShelves);
-         Control book = sender as Control;
-         foreach (Panel panel in AllShelves)
+         try
          {
-            if (book.Location == panel.Location & !(RemainingShelves.Contains(panel)))
+            ControlExtension.Draggable((Panel)sender, true);
+
+            //add the black where the book just was back to the list of where panels can go
+            //this allows it to be placed back
+            List<Panel> AllShelves = new List<Panel>(TopShelves);
+            AllShelves.AddRange(BottomShelves);
+            Control book = sender as Control;
+            foreach (Panel panel in AllShelves)
             {
-               RemainingShelves.Add(panel);
+               if (book.Location == panel.Location & !(RemainingShelves.Contains(panel)))
+               {
+                  RemainingShelves.Add(panel);
+               }
             }
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+            MessageBox.Show("Oops, something went wrong, please try again");
          }
       }
 
@@ -187,29 +220,37 @@ namespace JonathanPolakowPROG7312Part1
       /// <param name="e"></param>
       private void Panel_MouseUp(object sender, MouseEventArgs e)
       {
-         //which book was "dropped"
-         Control book = sender as Control;
-
-         //list of every panel and its distance to the "dropped" book
-         Dictionary<Panel, double> PanelDistances = new Dictionary<Panel, double>();
-
-         //Calculate every top selves distance to the book
-         foreach (Panel panel in RemainingShelves)
+         try
          {
-            int deltaX = book.Location.X - panel.Location.X;
-            int deltaY = book.Location.Y - panel.Location.Y;
+            //which book was "dropped"
+            Control book = sender as Control;
 
-            double totalDistance = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
-            PanelDistances.Add(panel, totalDistance);
+            //list of every panel and its distance to the "dropped" book
+            Dictionary<Panel, double> PanelDistances = new Dictionary<Panel, double>();
+
+            //Calculate every top selves distance to the book
+            foreach (Panel panel in RemainingShelves)
+            {
+               int deltaX = book.Location.X - panel.Location.X;
+               int deltaY = book.Location.Y - panel.Location.Y;
+
+               double totalDistance = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
+               PanelDistances.Add(panel, totalDistance);
+            }
+
+            //select the closest shelf
+            Panel ClosestPanel = PanelDistances.First(pair => pair.Value == PanelDistances.Values.Min()).Key;
+            book.Location = ClosestPanel.Location;
+
+            PlaySound("BookPlace");
+            FilterRemaining();
+            CheckOrder();
          }
-
-         //select the closest shelf
-         Panel ClosestPanel = PanelDistances.First(pair => pair.Value == PanelDistances.Values.Min()).Key;
-         book.Location = ClosestPanel.Location;
-
-         PlaySound("BookPlace");
-         FilterRemaining();
-         CheckOrder();
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+            MessageBox.Show("Oops, something went wrong, please try again");
+         }
       }
 
       //-------------------------------------------------------------------------------------------
@@ -218,34 +259,44 @@ namespace JonathanPolakowPROG7312Part1
       /// </summary>
       private void PopulateBooks()
       {
-         //list of the randomly generated Dewey Decimal numbers
-         List<string> DeweyDecimalList = new List<string>();
-
-         DeweyDecimalLibrary.Class1 generateDeweyDecimal = new DeweyDecimalLibrary.Class1();
-
-         for (int i = 0; i < Books.Count; i++)
+         try
          {
-            DeweyDecimalList.Add(generateDeweyDecimal.GenerateDeweyDecimal());
+            //list of the randomly generated Dewey Decimal numbers
+            List<string> DeweyDecimalList = new List<string>();
+
+            DeweyDecimalLibrary.Class1 generateDeweyDecimal = new DeweyDecimalLibrary.Class1();
+
+            for (int i = 0; i < Books.Count; i++)
+            {
+               DeweyDecimalList.Add(generateDeweyDecimal.GenerateDeweyDecimal());
+            }
+
+            //put numebrs on book
+            for (int i = 0; i < Books.Count; i++)
+            {
+               Label newLabel = new Label();
+               newLabel.Name = "BookNumber" + i;
+               newLabel.Text = DeweyDecimalList[i];
+               newLabel.Font = new Font(Label.DefaultFont, FontStyle.Bold);
+               newLabel.ForeColor = Color.Black;
+               newLabel.Top = Books[i].Height / 2 - newLabel.Height;
+               newLabel.Height = newLabel.Height + 5;
+               newLabel.Enabled = false;
+               Books[i].Controls.Add(newLabel);
+
+               SortedBooks.Add(Books[i].Name, DeweyDecimalList[i]);
+            }
+
+            //sort the list using a modified bubble sort
+            SortedBooks = BubbleSort(SortedBooks);
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+            MessageBox.Show("Oops, something went wrong, please try again");
+            BackToMenu();
          }
 
-         //put numebrs on book
-         for (int i = 0; i < Books.Count; i++)
-         {
-            Label newLabel = new Label();
-            newLabel.Name = "BookNumber" + i;
-            newLabel.Text = DeweyDecimalList[i];
-            newLabel.Font = new Font(Label.DefaultFont, FontStyle.Bold);
-            newLabel.ForeColor = Color.Black;
-            newLabel.Top = Books[i].Height / 2 - newLabel.Height;
-            newLabel.Height = newLabel.Height + 5;
-            newLabel.Enabled = false;
-            Books[i].Controls.Add(newLabel);
-
-            SortedBooks.Add(Books[i].Name, DeweyDecimalList[i]);
-         }
-
-         //sort the list using a modified bubble sort
-         SortedBooks = BubbleSort(SortedBooks);
       }
 
       //-------------------------------------------------------------------------------------------
@@ -254,24 +305,33 @@ namespace JonathanPolakowPROG7312Part1
       /// </summary>
       private void FilterRemaining()
       {
-         List<Panel> NewRemainingShelves = new List<Panel>(TopShelves);
-         NewRemainingShelves.AddRange(BottomShelves);
-         List<Panel> IterationList = new List<Panel>(NewRemainingShelves);
-
-         foreach (Panel RPanel in IterationList)
+         try
          {
-            foreach (Panel book in Books)
+            List<Panel> NewRemainingShelves = new List<Panel>(TopShelves);
+            NewRemainingShelves.AddRange(BottomShelves);
+            List<Panel> IterationList = new List<Panel>(NewRemainingShelves);
+
+            foreach (Panel RPanel in IterationList)
             {
-               //if the books and the shelves location line up remove it from the local list
-               if (book.Location == RPanel.Location)
+               foreach (Panel book in Books)
                {
-                  NewRemainingShelves.Remove(NewRemainingShelves.SingleOrDefault(x => x.Name == RPanel.Name));
+                  //if the books and the shelves location line up remove it from the local list
+                  if (book.Location == RPanel.Location)
+                  {
+                     NewRemainingShelves.Remove(NewRemainingShelves.SingleOrDefault(x => x.Name == RPanel.Name));
+                  }
                }
             }
+
+            //update the global list
+            RemainingShelves = NewRemainingShelves;
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+            MessageBox.Show("Oops, something went wrong, please try again");
          }
 
-         //update the global list
-         RemainingShelves = NewRemainingShelves;
       }
 
       //-------------------------------------------------------------------------------------------
@@ -281,55 +341,65 @@ namespace JonathanPolakowPROG7312Part1
       /// <returns></returns>
       private bool CheckOrder()
       {
-         List<string> BookOrder = new List<string>();
-         bool Valid = true;
-         int validCount = 0;
-
-         //check if each top shelve has a book
-         foreach (Panel RPanel in TopShelves)
+         try
          {
-            bool placed = false;
+            List<string> BookOrder = new List<string>();
+            bool Valid = true;
+            int validCount = 0;
 
-            foreach (Panel book in Books)
+            //check if each top shelve has a book
+            foreach (Panel RPanel in TopShelves)
             {
-               if (book.Location == RPanel.Location)
+               bool placed = false;
+
+               foreach (Panel book in Books)
                {
-                  BookOrder.Add(book.Name);
-                  placed = true;
+                  if (book.Location == RPanel.Location)
+                  {
+                     BookOrder.Add(book.Name);
+                     placed = true;
+                  }
+               }
+
+               //if the panel is empty the user has not finished placing the books
+               if (placed == false)
+               {
+                  Valid = false;
+                  BookOrder.Add(null);
                }
             }
 
-            //if the panel is empty the user has not finished placing the books
-            if (placed == false)
+            //check the users order of the books
+            for (int i = 0; i < BookOrder.Count; i++)
             {
-               Valid = false;
-               BookOrder.Add(null);
+               // Compare the dictionary key at the current position with the list element at the same position.
+               if (SortedBooks.ElementAt(i).Key != BookOrder[i])
+               {
+                  Valid = false;
+               }
+               else
+               {
+                  validCount++;
+               }
             }
-         }
 
-         //check the users order of the books
-         for (int i = 0; i < BookOrder.Count; i++)
+            pgbProgress.Value = validCount;
+
+            if (Valid)
+            {
+               Success();
+               return true;
+            }
+
+            return false;
+         }
+         catch (Exception ex)
          {
-            // Compare the dictionary key at the current position with the list element at the same position.
-            if (SortedBooks.ElementAt(i).Key != BookOrder[i])
-            {
-               Valid = false;
-            }
-            else
-            {
-               validCount++;
-            }
+            Console.WriteLine(ex.Message);
+            MessageBox.Show("Oops, something went wrong, please try again");
+            return false;
          }
 
-         pgbProgress.Value = validCount;
-
-         if (Valid)
-         {
-            Success();
-            return true;
-         }
-
-         return false;
       }
 
       //-------------------------------------------------------------------------------------------
@@ -338,20 +408,28 @@ namespace JonathanPolakowPROG7312Part1
       /// </summary>
       private void Success()
       {
-         pgbProgress.Value = 10;
-         tmrCountdown.Enabled = false;
-
-         _Awards.AddNewEntry(timeLimit, countDown);
-
-         PlaySound("Success");
-         MessageBox.Show("You Pass");
-
-         foreach (Panel book in Books)
+         try
          {
-            book.Enabled = false;
-         }
+            pgbProgress.Value = 10;
+            tmrCountdown.Enabled = false;
 
-         btnReset.Visible = true;
+            _Awards.AddNewEntry(timeLimit, countDown);
+
+            PlaySound("Success");
+            MessageBox.Show("You Pass");
+
+            foreach (Panel book in Books)
+            {
+               book.Enabled = false;
+            }
+
+            btnReset.Visible = true;
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+            MessageBox.Show("Oops, something went wrong, please try again");
+         }
       }
 
       //-------------------------------------------------------------------------------------------
@@ -360,16 +438,24 @@ namespace JonathanPolakowPROG7312Part1
       /// </summary>
       private void Fail()
       {
-         tmrCountdown.Enabled = false;
-         PlaySound("Fail");
-         MessageBox.Show("You Failed");
-
-         foreach (Panel book in Books)
+         try
          {
-            book.Enabled = false;
-         }
+            tmrCountdown.Enabled = false;
+            PlaySound("Fail");
+            MessageBox.Show("You Failed");
 
-         btnReset.Visible = true;
+            foreach (Panel book in Books)
+            {
+               book.Enabled = false;
+            }
+
+            btnReset.Visible = true;
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+            MessageBox.Show("Oops, something went wrong, please try again");
+         }
       }
 
       //-------------------------------------------------------------------------------------------
@@ -404,8 +490,9 @@ namespace JonathanPolakowPROG7312Part1
                }));
             });
          }
-         catch
+         catch (Exception ex)
          {
+            Console.WriteLine(ex.Message);
             //I am aware that empty catches are not good practice, in this case they work the best
             //This method plays sound effects, thus it is called alot, if a thredding or other issue happens then this catch prevents a crash 
             //displaying a popup is overkill and will disrupt the user experiance, not playing a sound effect is a better outcome
@@ -414,21 +501,38 @@ namespace JonathanPolakowPROG7312Part1
 
       //-------------------------------------------------------------------------------------------
       /// <summary>
-      /// reset button, calls the main form and disposes itself
+      /// reset button, 
       /// </summary>
       /// <param name="sender"></param>
       /// <param name="e"></param>
       private void BtnReset_Click(object sender, EventArgs e)
       {
-         tmrCountdown.Stop();
-         tmrCountdown.Dispose();
+         BackToMenu();
+      }
 
-         if (this.ParentForm is Form1 mainForm)
+      //-------------------------------------------------------------------------------------------
+      /// <summary>
+      /// calls the main form and disposes itself
+      /// </summary>
+      private void BackToMenu()
+      {
+         try
          {
-            mainForm.CloseUserControl();
-         }
+            tmrCountdown.Stop();
+            tmrCountdown.Dispose();
 
-         this.Dispose();
+            if (this.ParentForm is Form1 mainForm)
+            {
+               mainForm.CloseUserControl();
+            }
+
+            this.Dispose();
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+            MessageBox.Show("Oops, something went wrong, please try again");
+         }
       }
 
       //-------------------------------------------------------------------------------------------
@@ -440,31 +544,40 @@ namespace JonathanPolakowPROG7312Part1
       /// <returns></returns>
       private static Dictionary<string, string> BubbleSort(Dictionary<string, string> dictionary)
       {
-         //source: ChatGPT, and alot of manual fixing
-
-         var sortedPairs = dictionary.ToList();
-
-         for (int i = 0; i < sortedPairs.Count - 1; i++)
+         try
          {
-            for (int j = 0; j < sortedPairs.Count - i - 1; j++)
+            //source: ChatGPT, and alot of manual fixing
+
+            var sortedPairs = dictionary.ToList();
+
+            for (int i = 0; i < sortedPairs.Count - 1; i++)
             {
-               if (string.Compare(sortedPairs[j].Value, sortedPairs[j + 1].Value, StringComparison.Ordinal) > 0)
+               for (int j = 0; j < sortedPairs.Count - i - 1; j++)
                {
-                  var temp = sortedPairs[j];
-                  sortedPairs[j] = sortedPairs[j + 1];
-                  sortedPairs[j + 1] = temp;
+                  if (string.Compare(sortedPairs[j].Value, sortedPairs[j + 1].Value, StringComparison.Ordinal) > 0)
+                  {
+                     var temp = sortedPairs[j];
+                     sortedPairs[j] = sortedPairs[j + 1];
+                     sortedPairs[j + 1] = temp;
+                  }
                }
             }
+
+            var sortedDictionary = new Dictionary<string, string>();
+
+            foreach (var pair in sortedPairs)
+            {
+               sortedDictionary.Add(pair.Key, pair.Value);
+            }
+
+            return sortedDictionary;
          }
-
-         var sortedDictionary = new Dictionary<string, string>();
-
-         foreach (var pair in sortedPairs)
+         catch (Exception ex)
          {
-            sortedDictionary.Add(pair.Key, pair.Value);
+            Console.WriteLine(ex.Message);
+            MessageBox.Show("Oops, something went wrong, please try again");
+            return dictionary;
          }
-
-         return sortedDictionary;
       }
    }
 }
