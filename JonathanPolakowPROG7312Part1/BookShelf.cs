@@ -229,6 +229,7 @@ namespace JonathanPolakowPROG7312Part1
             Dictionary<Panel, double> PanelDistances = new Dictionary<Panel, double>();
 
             //Calculate every top selves distance to the book
+            //Source for the calculation: ChatGPT
             foreach (Panel panel in RemainingShelves)
             {
                int deltaX = book.Location.X - panel.Location.X;
