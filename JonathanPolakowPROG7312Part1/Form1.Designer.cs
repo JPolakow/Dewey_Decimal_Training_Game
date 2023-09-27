@@ -234,6 +234,9 @@
          this.Controls.Add(this.pnlAwards);
          this.Controls.Add(this.pnlPlaceBooks);
          this.Margin = new System.Windows.Forms.Padding(1);
+         this.MaximizeBox = false;
+         this.MaximumSize = new System.Drawing.Size(855, 635);
+         this.MinimumSize = new System.Drawing.Size(855, 635);
          this.Name = "Form1";
          this.Text = "Form1";
          this.pnlChooseDifficulty.ResumeLayout(false);
