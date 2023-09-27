@@ -135,5 +135,11 @@
       <Name>DeweyDecimalLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\BookPlace.mp3" />
+    <Content Include="bin\Debug\chillmusic.mp3" />
+    <Content Include="bin\Debug\Fail.mp3" />
+    <Content Include="bin\Debug\Success.mp3" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
