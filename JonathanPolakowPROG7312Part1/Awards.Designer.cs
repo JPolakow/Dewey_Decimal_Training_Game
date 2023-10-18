@@ -1,4 +1,4 @@
-﻿namespace JonathanPolakowPROG7312Part1
+﻿namespace JonathanPolakowPROG7312POE
 {
    partial class Awards
    {

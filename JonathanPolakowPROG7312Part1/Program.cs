@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace JonathanPolakowPROG7312Part1
+namespace JonathanPolakowPROG7312POE
 {
    internal static class Program
    {

@@ -1,4 +1,4 @@
-﻿namespace JonathanPolakowPROG7312Part1
+﻿namespace JonathanPolakowPROG7312POE
 {
    partial class Form1
    {
@@ -50,7 +50,7 @@
          // pnlPlaceBooks
          // 
          this.pnlPlaceBooks.BackColor = System.Drawing.Color.White;
-         this.pnlPlaceBooks.BackgroundImage = global::JonathanPolakowPROG7312Part1.Properties.Resources.BookShelfBackground;
+         this.pnlPlaceBooks.BackgroundImage = global::JonathanPolakowPROG7312POE.Properties.Resources.BookShelfBackground;
          this.pnlPlaceBooks.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
          this.pnlPlaceBooks.Dock = System.Windows.Forms.DockStyle.Fill;
          this.pnlPlaceBooks.Location = new System.Drawing.Point(0, 0);
@@ -62,7 +62,7 @@
          // pnlAwards
          // 
          this.pnlAwards.BackColor = System.Drawing.Color.White;
-         this.pnlAwards.BackgroundImage = global::JonathanPolakowPROG7312Part1.Properties.Resources.AwardsBackground;
+         this.pnlAwards.BackgroundImage = global::JonathanPolakowPROG7312POE.Properties.Resources.AwardsBackground;
          this.pnlAwards.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
          this.pnlAwards.Dock = System.Windows.Forms.DockStyle.Fill;
          this.pnlAwards.Location = new System.Drawing.Point(0, 0);
@@ -73,7 +73,7 @@
          // pnlChooseDifficulty
          // 
          this.pnlChooseDifficulty.BackColor = System.Drawing.Color.White;
-         this.pnlChooseDifficulty.BackgroundImage = global::JonathanPolakowPROG7312Part1.Properties.Resources.BookShelfBackground;
+         this.pnlChooseDifficulty.BackgroundImage = global::JonathanPolakowPROG7312POE.Properties.Resources.BookShelfBackground;
          this.pnlChooseDifficulty.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
          this.pnlChooseDifficulty.Controls.Add(this.btnBack);
          this.pnlChooseDifficulty.Controls.Add(this.lblHeading);
@@ -157,7 +157,7 @@
          // pnlMenu
          // 
          this.pnlMenu.BackColor = System.Drawing.Color.White;
-         this.pnlMenu.BackgroundImage = global::JonathanPolakowPROG7312Part1.Properties.Resources.LibraryBackground;
+         this.pnlMenu.BackgroundImage = global::JonathanPolakowPROG7312POE.Properties.Resources.LibraryBackground;
          this.pnlMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
          this.pnlMenu.Controls.Add(this.label1);
          this.pnlMenu.Controls.Add(this.btnAwards);

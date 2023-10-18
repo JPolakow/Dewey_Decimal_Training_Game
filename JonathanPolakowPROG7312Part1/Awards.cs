@@ -1,11 +1,11 @@
 ﻿//Jonathan Polakow
 //ST10081881
-//PROG7312 POE part 1
+//PROG7312 POE Part 2
 
 using System;
 using System.Windows.Forms;
 
-namespace JonathanPolakowPROG7312Part1
+namespace JonathanPolakowPROG7312POE
 {
    public partial class Awards : UserControl
    {
