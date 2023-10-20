@@ -1,4 +1,4 @@
-﻿namespace JonathanPolakowPROG7312POE
+﻿namespace JonathanPolakowPROG7312Part1
 {
    partial class BookShelf
    {
@@ -29,6 +29,16 @@
       private void InitializeComponent()
       {
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookShelf));
+         this.Book0 = new System.Windows.Forms.Panel();
+         this.Book1 = new System.Windows.Forms.Panel();
+         this.Book3 = new System.Windows.Forms.Panel();
+         this.Book2 = new System.Windows.Forms.Panel();
+         this.Book8 = new System.Windows.Forms.Panel();
+         this.Book7 = new System.Windows.Forms.Panel();
+         this.Book6 = new System.Windows.Forms.Panel();
+         this.Book4 = new System.Windows.Forms.Panel();
+         this.Book9 = new System.Windows.Forms.Panel();
+         this.Book5 = new System.Windows.Forms.Panel();
          this.TopShelf9 = new System.Windows.Forms.Panel();
          this.TopShelf5 = new System.Windows.Forms.Panel();
          this.TopShelf8 = new System.Windows.Forms.Panel();
@@ -39,6 +49,7 @@
          this.TopShelf4 = new System.Windows.Forms.Panel();
          this.TopShelf1 = new System.Windows.Forms.Panel();
          this.TopShelf0 = new System.Windows.Forms.Panel();
+         this.imgBackGround = new System.Windows.Forms.PictureBox();
          this.BottomShelf9 = new System.Windows.Forms.Panel();
          this.BottomShelf5 = new System.Windows.Forms.Panel();
          this.BottomShelf8 = new System.Windows.Forms.Panel();
@@ -53,19 +64,138 @@
          this.lblCountdown = new System.Windows.Forms.Label();
          this.btnReset = new System.Windows.Forms.Button();
          this.btnExit = new System.Windows.Forms.Button();
-         this.Book1 = new System.Windows.Forms.Panel();
-         this.Book9 = new System.Windows.Forms.Panel();
-         this.Book5 = new System.Windows.Forms.Panel();
-         this.Book8 = new System.Windows.Forms.Panel();
-         this.Book7 = new System.Windows.Forms.Panel();
-         this.Book3 = new System.Windows.Forms.Panel();
-         this.Book6 = new System.Windows.Forms.Panel();
-         this.Book2 = new System.Windows.Forms.Panel();
-         this.Book4 = new System.Windows.Forms.Panel();
-         this.Book0 = new System.Windows.Forms.Panel();
-         this.imgBackGround = new System.Windows.Forms.PictureBox();
          ((System.ComponentModel.ISupportInitialize)(this.imgBackGround)).BeginInit();
          this.SuspendLayout();
+         // 
+         // Book0
+         // 
+         this.Book0.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.Book0.BackgroundImage = global::JonathanPolakowPROG7312Part1.Properties.Resources.BookStyle;
+         this.Book0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+         this.Book0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+         this.Book0.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+         this.Book0.Location = new System.Drawing.Point(63, 381);
+         this.Book0.Margin = new System.Windows.Forms.Padding(1);
+         this.Book0.Name = "Book0";
+         this.Book0.Size = new System.Drawing.Size(53, 105);
+         this.Book0.TabIndex = 0;
+         // 
+         // Book1
+         // 
+         this.Book1.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.Book1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book1.BackgroundImage")));
+         this.Book1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+         this.Book1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+         this.Book1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+         this.Book1.Location = new System.Drawing.Point(118, 381);
+         this.Book1.Margin = new System.Windows.Forms.Padding(1);
+         this.Book1.Name = "Book1";
+         this.Book1.Size = new System.Drawing.Size(53, 105);
+         this.Book1.TabIndex = 1;
+         // 
+         // Book3
+         // 
+         this.Book3.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.Book3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book3.BackgroundImage")));
+         this.Book3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+         this.Book3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+         this.Book3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+         this.Book3.Location = new System.Drawing.Point(228, 381);
+         this.Book3.Margin = new System.Windows.Forms.Padding(1);
+         this.Book3.Name = "Book3";
+         this.Book3.Size = new System.Drawing.Size(53, 105);
+         this.Book3.TabIndex = 4;
+         // 
+         // Book2
+         // 
+         this.Book2.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.Book2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book2.BackgroundImage")));
+         this.Book2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+         this.Book2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+         this.Book2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+         this.Book2.Location = new System.Drawing.Point(173, 381);
+         this.Book2.Margin = new System.Windows.Forms.Padding(1);
+         this.Book2.Name = "Book2";
+         this.Book2.Size = new System.Drawing.Size(53, 105);
+         this.Book2.TabIndex = 3;
+         // 
+         // Book8
+         // 
+         this.Book8.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.Book8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book8.BackgroundImage")));
+         this.Book8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+         this.Book8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+         this.Book8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+         this.Book8.Location = new System.Drawing.Point(504, 381);
+         this.Book8.Margin = new System.Windows.Forms.Padding(1);
+         this.Book8.Name = "Book8";
+         this.Book8.Size = new System.Drawing.Size(53, 105);
+         this.Book8.TabIndex = 8;
+         // 
+         // Book7
+         // 
+         this.Book7.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.Book7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book7.BackgroundImage")));
+         this.Book7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+         this.Book7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+         this.Book7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+         this.Book7.Location = new System.Drawing.Point(449, 381);
+         this.Book7.Margin = new System.Windows.Forms.Padding(1);
+         this.Book7.Name = "Book7";
+         this.Book7.Size = new System.Drawing.Size(53, 105);
+         this.Book7.TabIndex = 7;
+         // 
+         // Book6
+         // 
+         this.Book6.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.Book6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book6.BackgroundImage")));
+         this.Book6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+         this.Book6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+         this.Book6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+         this.Book6.Location = new System.Drawing.Point(394, 381);
+         this.Book6.Margin = new System.Windows.Forms.Padding(1);
+         this.Book6.Name = "Book6";
+         this.Book6.Size = new System.Drawing.Size(53, 105);
+         this.Book6.TabIndex = 6;
+         // 
+         // Book4
+         // 
+         this.Book4.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.Book4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book4.BackgroundImage")));
+         this.Book4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+         this.Book4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+         this.Book4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+         this.Book4.Location = new System.Drawing.Point(284, 381);
+         this.Book4.Margin = new System.Windows.Forms.Padding(1);
+         this.Book4.Name = "Book4";
+         this.Book4.Size = new System.Drawing.Size(53, 105);
+         this.Book4.TabIndex = 5;
+         // 
+         // Book9
+         // 
+         this.Book9.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.Book9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book9.BackgroundImage")));
+         this.Book9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+         this.Book9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+         this.Book9.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+         this.Book9.Location = new System.Drawing.Point(559, 381);
+         this.Book9.Margin = new System.Windows.Forms.Padding(1);
+         this.Book9.Name = "Book9";
+         this.Book9.Size = new System.Drawing.Size(53, 105);
+         this.Book9.TabIndex = 9;
+         // 
+         // Book5
+         // 
+         this.Book5.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.Book5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book5.BackgroundImage")));
+         this.Book5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+         this.Book5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+         this.Book5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+         this.Book5.Location = new System.Drawing.Point(339, 381);
+         this.Book5.Margin = new System.Windows.Forms.Padding(1);
+         this.Book5.Name = "Book5";
+         this.Book5.Size = new System.Drawing.Size(53, 105);
+         this.Book5.TabIndex = 0;
          // 
          // TopShelf9
          // 
@@ -176,6 +306,18 @@
          this.TopShelf0.Name = "TopShelf0";
          this.TopShelf0.Size = new System.Drawing.Size(53, 105);
          this.TopShelf0.TabIndex = 11;
+         // 
+         // imgBackGround
+         // 
+         this.imgBackGround.BackColor = System.Drawing.Color.Transparent;
+         this.imgBackGround.Image = global::JonathanPolakowPROG7312Part1.Properties.Resources.Bookself1;
+         this.imgBackGround.Location = new System.Drawing.Point(15, 20);
+         this.imgBackGround.Margin = new System.Windows.Forms.Padding(1);
+         this.imgBackGround.Name = "imgBackGround";
+         this.imgBackGround.Size = new System.Drawing.Size(644, 536);
+         this.imgBackGround.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+         this.imgBackGround.TabIndex = 0;
+         this.imgBackGround.TabStop = false;
          // 
          // BottomShelf9
          // 
@@ -310,18 +452,16 @@
          // 
          this.lblCountdown.AutoSize = true;
          this.lblCountdown.BackColor = System.Drawing.Color.Transparent;
-         this.lblCountdown.Font = new System.Drawing.Font("Monotype Corsiva", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.lblCountdown.ForeColor = System.Drawing.SystemColors.ControlLight;
-         this.lblCountdown.Location = new System.Drawing.Point(660, 41);
+         this.lblCountdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.lblCountdown.Location = new System.Drawing.Point(660, 26);
          this.lblCountdown.Name = "lblCountdown";
-         this.lblCountdown.Size = new System.Drawing.Size(32, 26);
+         this.lblCountdown.Size = new System.Drawing.Size(24, 17);
          this.lblCountdown.TabIndex = 32;
          this.lblCountdown.Text = "90";
          this.lblCountdown.Visible = false;
          // 
          // btnReset
          // 
-         this.btnReset.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.btnReset.Location = new System.Drawing.Point(284, 272);
          this.btnReset.Name = "btnReset";
          this.btnReset.Size = new System.Drawing.Size(108, 30);
@@ -329,166 +469,23 @@
          this.btnReset.Text = "Restart";
          this.btnReset.UseVisualStyleBackColor = true;
          this.btnReset.Visible = false;
-         this.btnReset.Click += new System.EventHandler(this.BtnReset_Click);
+         this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
          // 
          // btnExit
          // 
-         this.btnExit.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btnExit.Location = new System.Drawing.Point(663, 526);
+         this.btnExit.Location = new System.Drawing.Point(663, 533);
          this.btnExit.Name = "btnExit";
-         this.btnExit.Size = new System.Drawing.Size(49, 28);
+         this.btnExit.Size = new System.Drawing.Size(49, 21);
          this.btnExit.TabIndex = 34;
          this.btnExit.Text = "EXIT";
          this.btnExit.UseVisualStyleBackColor = true;
-         this.btnExit.Click += new System.EventHandler(this.BtnReset_Click);
-         // 
-         // Book1
-         // 
-         this.Book1.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.Book1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book1.BackgroundImage")));
-         this.Book1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-         this.Book1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-         this.Book1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.Book1.Location = new System.Drawing.Point(118, 381);
-         this.Book1.Margin = new System.Windows.Forms.Padding(1);
-         this.Book1.Name = "Book1";
-         this.Book1.Size = new System.Drawing.Size(53, 105);
-         this.Book1.TabIndex = 1;
-         // 
-         // Book9
-         // 
-         this.Book9.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.Book9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book9.BackgroundImage")));
-         this.Book9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-         this.Book9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-         this.Book9.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.Book9.Location = new System.Drawing.Point(559, 381);
-         this.Book9.Margin = new System.Windows.Forms.Padding(1);
-         this.Book9.Name = "Book9";
-         this.Book9.Size = new System.Drawing.Size(53, 105);
-         this.Book9.TabIndex = 9;
-         // 
-         // Book5
-         // 
-         this.Book5.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.Book5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book5.BackgroundImage")));
-         this.Book5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-         this.Book5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-         this.Book5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.Book5.Location = new System.Drawing.Point(339, 381);
-         this.Book5.Margin = new System.Windows.Forms.Padding(1);
-         this.Book5.Name = "Book5";
-         this.Book5.Size = new System.Drawing.Size(53, 105);
-         this.Book5.TabIndex = 0;
-         // 
-         // Book8
-         // 
-         this.Book8.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.Book8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book8.BackgroundImage")));
-         this.Book8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-         this.Book8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-         this.Book8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.Book8.Location = new System.Drawing.Point(504, 381);
-         this.Book8.Margin = new System.Windows.Forms.Padding(1);
-         this.Book8.Name = "Book8";
-         this.Book8.Size = new System.Drawing.Size(53, 105);
-         this.Book8.TabIndex = 8;
-         // 
-         // Book7
-         // 
-         this.Book7.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.Book7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book7.BackgroundImage")));
-         this.Book7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-         this.Book7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-         this.Book7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.Book7.Location = new System.Drawing.Point(449, 381);
-         this.Book7.Margin = new System.Windows.Forms.Padding(1);
-         this.Book7.Name = "Book7";
-         this.Book7.Size = new System.Drawing.Size(53, 105);
-         this.Book7.TabIndex = 7;
-         // 
-         // Book3
-         // 
-         this.Book3.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.Book3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book3.BackgroundImage")));
-         this.Book3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-         this.Book3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-         this.Book3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.Book3.Location = new System.Drawing.Point(228, 381);
-         this.Book3.Margin = new System.Windows.Forms.Padding(1);
-         this.Book3.Name = "Book3";
-         this.Book3.Size = new System.Drawing.Size(53, 105);
-         this.Book3.TabIndex = 4;
-         // 
-         // Book6
-         // 
-         this.Book6.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.Book6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book6.BackgroundImage")));
-         this.Book6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-         this.Book6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-         this.Book6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.Book6.Location = new System.Drawing.Point(394, 381);
-         this.Book6.Margin = new System.Windows.Forms.Padding(1);
-         this.Book6.Name = "Book6";
-         this.Book6.Size = new System.Drawing.Size(53, 105);
-         this.Book6.TabIndex = 6;
-         // 
-         // Book2
-         // 
-         this.Book2.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.Book2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book2.BackgroundImage")));
-         this.Book2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-         this.Book2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-         this.Book2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.Book2.Location = new System.Drawing.Point(173, 381);
-         this.Book2.Margin = new System.Windows.Forms.Padding(1);
-         this.Book2.Name = "Book2";
-         this.Book2.Size = new System.Drawing.Size(53, 105);
-         this.Book2.TabIndex = 3;
-         // 
-         // Book4
-         // 
-         this.Book4.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.Book4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Book4.BackgroundImage")));
-         this.Book4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-         this.Book4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-         this.Book4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.Book4.Location = new System.Drawing.Point(284, 381);
-         this.Book4.Margin = new System.Windows.Forms.Padding(1);
-         this.Book4.Name = "Book4";
-         this.Book4.Size = new System.Drawing.Size(53, 105);
-         this.Book4.TabIndex = 5;
-         // 
-         // Book0
-         // 
-         this.Book0.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.Book0.BackgroundImage = global::JonathanPolakowPROG7312POE.Properties.Resources.BookStyle;
-         this.Book0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-         this.Book0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-         this.Book0.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.Book0.Location = new System.Drawing.Point(63, 381);
-         this.Book0.Margin = new System.Windows.Forms.Padding(1);
-         this.Book0.Name = "Book0";
-         this.Book0.Size = new System.Drawing.Size(53, 105);
-         this.Book0.TabIndex = 0;
-         // 
-         // imgBackGround
-         // 
-         this.imgBackGround.BackColor = System.Drawing.Color.Transparent;
-         this.imgBackGround.Image = global::JonathanPolakowPROG7312POE.Properties.Resources.BookselfNoBackground;
-         this.imgBackGround.Location = new System.Drawing.Point(15, 20);
-         this.imgBackGround.Margin = new System.Windows.Forms.Padding(1);
-         this.imgBackGround.Name = "imgBackGround";
-         this.imgBackGround.Size = new System.Drawing.Size(644, 536);
-         this.imgBackGround.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-         this.imgBackGround.TabIndex = 0;
-         this.imgBackGround.TabStop = false;
+         this.btnExit.Click += new System.EventHandler(this.btnReset_Click);
          // 
          // BookShelf
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.BackColor = System.Drawing.Color.Transparent;
+         this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
          this.Controls.Add(this.btnExit);
          this.Controls.Add(this.btnReset);
          this.Controls.Add(this.lblCountdown);

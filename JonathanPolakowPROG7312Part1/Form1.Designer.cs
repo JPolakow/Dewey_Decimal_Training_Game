@@ -1,4 +1,4 @@
-﻿namespace JonathanPolakowPROG7312Part1
+﻿namespace JonathanPolakowPROG7312POE
 {
    partial class Form1
    {
@@ -41,8 +41,9 @@
          this.label1 = new System.Windows.Forms.Label();
          this.btnAwards = new System.Windows.Forms.Button();
          this.btn3 = new System.Windows.Forms.Button();
-         this.btn2 = new System.Windows.Forms.Button();
+         this.btnIdentifyAreas = new System.Windows.Forms.Button();
          this.btnPlaceBooks = new System.Windows.Forms.Button();
+         this.pnlIdentifyAreas = new System.Windows.Forms.Panel();
          this.pnlChooseDifficulty.SuspendLayout();
          this.pnlMenu.SuspendLayout();
          this.SuspendLayout();
@@ -50,30 +51,30 @@
          // pnlPlaceBooks
          // 
          this.pnlPlaceBooks.BackColor = System.Drawing.Color.White;
-         this.pnlPlaceBooks.BackgroundImage = global::JonathanPolakowPROG7312Part1.Properties.Resources.BookShelfBackground;
+         this.pnlPlaceBooks.BackgroundImage = global::JonathanPolakowPROG7312POE.Properties.Resources.BookShelfBackground;
          this.pnlPlaceBooks.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
          this.pnlPlaceBooks.Dock = System.Windows.Forms.DockStyle.Fill;
          this.pnlPlaceBooks.Location = new System.Drawing.Point(0, 0);
          this.pnlPlaceBooks.Name = "pnlPlaceBooks";
-         this.pnlPlaceBooks.Size = new System.Drawing.Size(839, 596);
+         this.pnlPlaceBooks.Size = new System.Drawing.Size(829, 567);
          this.pnlPlaceBooks.TabIndex = 1;
          this.pnlPlaceBooks.Visible = false;
          // 
          // pnlAwards
          // 
          this.pnlAwards.BackColor = System.Drawing.Color.White;
-         this.pnlAwards.BackgroundImage = global::JonathanPolakowPROG7312Part1.Properties.Resources.AwardsBackground;
+         this.pnlAwards.BackgroundImage = global::JonathanPolakowPROG7312POE.Properties.Resources.AwardsBackground;
          this.pnlAwards.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
          this.pnlAwards.Dock = System.Windows.Forms.DockStyle.Fill;
          this.pnlAwards.Location = new System.Drawing.Point(0, 0);
          this.pnlAwards.Name = "pnlAwards";
-         this.pnlAwards.Size = new System.Drawing.Size(839, 596);
+         this.pnlAwards.Size = new System.Drawing.Size(829, 567);
          this.pnlAwards.TabIndex = 4;
          // 
          // pnlChooseDifficulty
          // 
          this.pnlChooseDifficulty.BackColor = System.Drawing.Color.White;
-         this.pnlChooseDifficulty.BackgroundImage = global::JonathanPolakowPROG7312Part1.Properties.Resources.BookShelfBackground;
+         this.pnlChooseDifficulty.BackgroundImage = global::JonathanPolakowPROG7312POE.Properties.Resources.BookShelfBackground;
          this.pnlChooseDifficulty.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
          this.pnlChooseDifficulty.Controls.Add(this.btnBack);
          this.pnlChooseDifficulty.Controls.Add(this.lblHeading);
@@ -84,7 +85,7 @@
          this.pnlChooseDifficulty.Dock = System.Windows.Forms.DockStyle.Fill;
          this.pnlChooseDifficulty.Location = new System.Drawing.Point(0, 0);
          this.pnlChooseDifficulty.Name = "pnlChooseDifficulty";
-         this.pnlChooseDifficulty.Size = new System.Drawing.Size(839, 596);
+         this.pnlChooseDifficulty.Size = new System.Drawing.Size(829, 567);
          this.pnlChooseDifficulty.TabIndex = 4;
          // 
          // btnBack
@@ -157,17 +158,17 @@
          // pnlMenu
          // 
          this.pnlMenu.BackColor = System.Drawing.Color.White;
-         this.pnlMenu.BackgroundImage = global::JonathanPolakowPROG7312Part1.Properties.Resources.LibraryBackground;
+         this.pnlMenu.BackgroundImage = global::JonathanPolakowPROG7312POE.Properties.Resources.LibraryBackground;
          this.pnlMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
          this.pnlMenu.Controls.Add(this.label1);
          this.pnlMenu.Controls.Add(this.btnAwards);
          this.pnlMenu.Controls.Add(this.btn3);
-         this.pnlMenu.Controls.Add(this.btn2);
+         this.pnlMenu.Controls.Add(this.btnIdentifyAreas);
          this.pnlMenu.Controls.Add(this.btnPlaceBooks);
          this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
          this.pnlMenu.Location = new System.Drawing.Point(0, 0);
          this.pnlMenu.Name = "pnlMenu";
-         this.pnlMenu.Size = new System.Drawing.Size(839, 596);
+         this.pnlMenu.Size = new System.Drawing.Size(829, 567);
          this.pnlMenu.TabIndex = 1;
          // 
          // label1
@@ -203,15 +204,16 @@
          this.btn3.Text = "Find Call Numbers";
          this.btn3.UseVisualStyleBackColor = true;
          // 
-         // btn2
+         // btnIdentifyAreas
          // 
-         this.btn2.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btn2.Location = new System.Drawing.Point(353, 248);
-         this.btn2.Name = "btn2";
-         this.btn2.Size = new System.Drawing.Size(130, 28);
-         this.btn2.TabIndex = 1;
-         this.btn2.Text = "Identify Areas";
-         this.btn2.UseVisualStyleBackColor = true;
+         this.btnIdentifyAreas.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.btnIdentifyAreas.Location = new System.Drawing.Point(353, 248);
+         this.btnIdentifyAreas.Name = "btnIdentifyAreas";
+         this.btnIdentifyAreas.Size = new System.Drawing.Size(130, 28);
+         this.btnIdentifyAreas.TabIndex = 1;
+         this.btnIdentifyAreas.Text = "Identify Areas";
+         this.btnIdentifyAreas.UseVisualStyleBackColor = true;
+         this.btnIdentifyAreas.Click += new System.EventHandler(this.btnIdentifyAreas_Click);
          // 
          // btnPlaceBooks
          // 
@@ -224,19 +226,32 @@
          this.btnPlaceBooks.UseVisualStyleBackColor = true;
          this.btnPlaceBooks.Click += new System.EventHandler(this.BtnPlaceBooks_Click);
          // 
+         // pnlIdentifyAreas
+         // 
+         this.pnlIdentifyAreas.BackColor = System.Drawing.Color.White;
+         this.pnlIdentifyAreas.BackgroundImage = global::JonathanPolakowPROG7312POE.Properties.Resources.BookShelfBackground;
+         this.pnlIdentifyAreas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+         this.pnlIdentifyAreas.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.pnlIdentifyAreas.Location = new System.Drawing.Point(0, 0);
+         this.pnlIdentifyAreas.Name = "pnlIdentifyAreas";
+         this.pnlIdentifyAreas.Size = new System.Drawing.Size(829, 567);
+         this.pnlIdentifyAreas.TabIndex = 2;
+         this.pnlIdentifyAreas.Visible = false;
+         // 
          // Form1
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(839, 596);
+         this.ClientSize = new System.Drawing.Size(829, 567);
+         this.Controls.Add(this.pnlIdentifyAreas);
          this.Controls.Add(this.pnlMenu);
          this.Controls.Add(this.pnlChooseDifficulty);
          this.Controls.Add(this.pnlAwards);
          this.Controls.Add(this.pnlPlaceBooks);
          this.Margin = new System.Windows.Forms.Padding(1);
          this.MaximizeBox = false;
-         this.MaximumSize = new System.Drawing.Size(855, 635);
-         this.MinimumSize = new System.Drawing.Size(855, 635);
+         this.MaximumSize = new System.Drawing.Size(845, 606);
+         this.MinimumSize = new System.Drawing.Size(845, 606);
          this.Name = "Form1";
          this.Text = "Form1";
          this.pnlChooseDifficulty.ResumeLayout(false);
@@ -252,11 +267,12 @@
       private System.Windows.Forms.Panel pnlMenu;
       private System.Windows.Forms.Button btnAwards;
       private System.Windows.Forms.Button btn3;
-      private System.Windows.Forms.Button btn2;
+      private System.Windows.Forms.Button btnIdentifyAreas;
       private System.Windows.Forms.Button btnPlaceBooks;
       private System.Windows.Forms.Panel pnlAwards;
       private System.Windows.Forms.Panel pnlChooseDifficulty;
       private BookShelf bookShelf1;
+      private IdentifyAreas identifyAreas1;
       private Awards awards1;
       private System.Windows.Forms.Label lblHeading;
       private System.Windows.Forms.Button btnHard;
@@ -265,6 +281,7 @@
       private System.Windows.Forms.Button btnCasual;
       private System.Windows.Forms.Label label1;
       private System.Windows.Forms.Button btnBack;
+      private System.Windows.Forms.Panel pnlIdentifyAreas;
    }
 }
 

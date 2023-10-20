@@ -1,4 +1,4 @@
-﻿namespace JonathanPolakowPROG7312POE
+﻿namespace JonathanPolakowPROG7312Part1
 {
    partial class BookShelf
    {
@@ -462,7 +462,7 @@
          // Book0
          // 
          this.Book0.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.Book0.BackgroundImage = global::JonathanPolakowPROG7312POE.Properties.Resources.BookStyle;
+         this.Book0.BackgroundImage = global::JonathanPolakowPROG7312Part1.Properties.Resources.BookStyle;
          this.Book0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
          this.Book0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.Book0.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -475,7 +475,7 @@
          // imgBackGround
          // 
          this.imgBackGround.BackColor = System.Drawing.Color.Transparent;
-         this.imgBackGround.Image = global::JonathanPolakowPROG7312POE.Properties.Resources.BookselfNoBackground;
+         this.imgBackGround.Image = global::JonathanPolakowPROG7312Part1.Properties.Resources.BookselfNoBackground;
          this.imgBackGround.Location = new System.Drawing.Point(15, 20);
          this.imgBackGround.Margin = new System.Windows.Forms.Padding(1);
          this.imgBackGround.Name = "imgBackGround";

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JonathanPolakowPROG7312Part1.Properties {
+namespace JonathanPolakowPROG7312POE.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace JonathanPolakowPROG7312Part1.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("JonathanPolakowPROG7312Part1.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("JonathanPolakowPROG7312POE.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

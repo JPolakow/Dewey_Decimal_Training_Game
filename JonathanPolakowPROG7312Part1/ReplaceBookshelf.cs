@@ -1,6 +1,6 @@
 ﻿//Jonathan Polakow
 //ST10081881
-//PROG7312 POE Part 2
+//PROG7312 POE part 1
 
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace JonathanPolakowPROG7312POE
+namespace JonathanPolakowPROG7312Part1
 {
    public partial class BookShelf : UserControl
    {

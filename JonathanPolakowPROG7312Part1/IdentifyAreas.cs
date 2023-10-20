@@ -3,17 +3,22 @@
 //PROG7312 POE Part 2
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace JonathanPolakowPROG7312POE
 {
-   public partial class BookShelf : UserControl
+   public partial class IdentifyAreas : UserControl
    {
+      #region vars
       /// <summary>
       /// awards model singleton
       /// </summary>
@@ -25,11 +30,11 @@ namespace JonathanPolakowPROG7312POE
       /// <summary>
       /// list of all the top panels
       /// </summary>
-      private List<Panel> TopShelves = new List<Panel>();
+      private List<Panel> AnswerShelves = new List<Panel>();
       /// <summary>
       /// list of all the bottom panels
       /// </summary>
-      private List<Panel> BottomShelves = new List<Panel>();
+      private List<Panel> QuestionShelves = new List<Panel>();
       /// <summary>
       /// list of all the panels that are not occupied by a book
       /// </summary>
@@ -38,6 +43,10 @@ namespace JonathanPolakowPROG7312POE
       /// dictionary contraining the Dewey Decimal numbers in order and the bnook the number was assigned to
       /// </summary>
       private Dictionary<string, string> SortedBooks = new Dictionary<string, string>();
+      /// <summary>
+      /// a list containing the correct orders the answer to the questions must be in, for blank answers its = null
+      /// </summary>
+      private List<string> CorrectOrder = new List<string>();
       /// <summary>
       /// random object
       /// </summary>
@@ -54,13 +63,15 @@ namespace JonathanPolakowPROG7312POE
       /// timer for the countdown
       /// </summary>
       private Timer tmrCountdown;
-
-      //-------------------------------------------------------------------------------------------
       /// <summary>
-      /// constructor
+      /// instance of the worker class made for this game
       /// </summary>
-      /// <param name="Timelimit"></param>
-      public BookShelf(int Timelimit)
+      IdentifyAreasWorker worker = new IdentifyAreasWorker();
+      //instance of the worker class made for this game
+      PlaySounds sounds = new PlaySounds();
+      #endregion 
+
+      public IdentifyAreas(int Timelimit)
       {
          timeLimit = Timelimit;
          countDown = timeLimit;
@@ -92,24 +103,26 @@ namespace JonathanPolakowPROG7312POE
                   panel.BackColor = RandomBrightColor();
                }
 
-               if (panel.Name.Contains("Top"))
+               if (panel.Name.Contains("Answer"))
                {
-                  TopShelves.Add(panel);
+                  AnswerShelves.Add(panel);
                   RemainingShelves.Add(panel);
-                  panel.Visible = false;
+                  panel.BackColor = RandomBrightColor();
+                  //panel.Visible = false;
                }
 
-               if (panel.Name.Contains("Bottom"))
+               if (panel.Name.Contains("Question"))
                {
-                  BottomShelves.Add(panel);
+                  QuestionShelves.Add(panel);
                   RemainingShelves.Add(panel);
-                  panel.Visible = false;
+                  panel.BackColor = RandomBrightColor();
+                  //panel.Visible = false;
                }
             }
 
             Books = Books.OrderBy(panel => panel.Name).ToList();
-            TopShelves = TopShelves.OrderBy(panel => panel.Name).ToList();
-            BottomShelves = BottomShelves.OrderBy(panel => panel.Name).ToList();
+            AnswerShelves = AnswerShelves.OrderBy(panel => panel.Name).ToList();
+            QuestionShelves = QuestionShelves.OrderBy(panel => panel.Name).ToList();
          }
          catch (Exception ex)
          {
@@ -194,8 +207,8 @@ namespace JonathanPolakowPROG7312POE
 
             //add the black where the book just was back to the list of where panels can go
             //this allows it to be placed back
-            List<Panel> AllShelves = new List<Panel>(TopShelves);
-            AllShelves.AddRange(BottomShelves);
+            List<Panel> AllShelves = new List<Panel>(AnswerShelves);
+            AllShelves.AddRange(QuestionShelves);
             Control book = sender as Control;
             foreach (Panel panel in AllShelves)
             {
@@ -243,7 +256,11 @@ namespace JonathanPolakowPROG7312POE
             Panel ClosestPanel = PanelDistances.First(pair => pair.Value == PanelDistances.Values.Min()).Key;
             book.Location = ClosestPanel.Location;
 
-            PlaySound("BookPlace");
+            this.Invoke((Action)(() =>
+            {
+               sounds.PlaySound("BookPlace");
+            }));
+
             FilterRemaining();
             CheckOrder();
          }
@@ -262,38 +279,50 @@ namespace JonathanPolakowPROG7312POE
       {
          try
          {
-            //list of the randomly generated Dewey Decimal numbers
-            List<string> DeweyDecimalList = new List<string>();
+            Dictionary<string, string> shuffledDictionary = new Dictionary<string, string>();
+            shuffledDictionary = worker.GenerateOrder();
+            int answerCount = 0;
 
-            DeweyDecimalLibrary.Class1 generateDeweyDecimal = new DeweyDecimalLibrary.Class1();
-
-            for (int i = 0; i < Books.Count; i++)
+            for (int i = 0; i < shuffledDictionary.Count; i++)
             {
-               DeweyDecimalList.Add(generateDeweyDecimal.GenerateDeweyDecimal());
-            }
+               if (!shuffledDictionary.ElementAt(i).Key.Contains("leave"))
+               {
+                  Label newAnswerLabel = new Label();
+                  newAnswerLabel.Name = "BookNumber" + i;
+                  newAnswerLabel.Text = shuffledDictionary.ElementAt(i).Key;
+                  newAnswerLabel.Font = new Font(Label.DefaultFont, FontStyle.Bold);
+                  newAnswerLabel.ForeColor = Color.Black;
+                  newAnswerLabel.Top = Books[answerCount].Height / 2 - newAnswerLabel.Height;
+                  newAnswerLabel.Height = newAnswerLabel.Height + 5;
+                  newAnswerLabel.Enabled = false;
+                  Books[answerCount].Controls.Add(newAnswerLabel);
+                  Books[answerCount].Name = shuffledDictionary.ElementAt(i).Key;
+                  answerCount++;
+               }
 
-            //put numebrs on book
-            for (int i = 0; i < Books.Count; i++)
-            {
                Label newLabel = new Label();
-               newLabel.Name = "BookNumber" + i;
-               newLabel.Text = DeweyDecimalList[i];
+               newLabel.Name = "QuestionNumber" + i;
+               newLabel.Text = shuffledDictionary.ElementAt(i).Value;
                newLabel.Font = new Font(Label.DefaultFont, FontStyle.Bold);
                newLabel.ForeColor = Color.Black;
-               newLabel.Top = Books[i].Height / 2 - newLabel.Height;
+               newLabel.Top = QuestionShelves[i].Height / 2 - newLabel.Height;
                newLabel.Height = newLabel.Height + 5;
                newLabel.Enabled = false;
-               Books[i].Controls.Add(newLabel);
-
-               SortedBooks.Add(Books[i].Name, DeweyDecimalList[i]);
+               newLabel.Left = QuestionShelves[i].Width / 2;
+               QuestionShelves[i].Controls.Add(newLabel);
             }
 
-            //sort the list using a modified bubble sort
-            SortedBooks = BubbleSort(SortedBooks);
+            SortedBooks = shuffledDictionary.ToDictionary(pair => pair.Key, pair => pair.Value);
+
+            foreach (var item in SortedBooks)
+            {
+               Console.WriteLine(item.Key);
+               Console.WriteLine(item.Value);
+            }
          }
          catch (Exception ex)
          {
-            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.ToString());
             MessageBox.Show("Oops, something went wrong, please try again");
             BackToMenu();
          }
@@ -308,8 +337,8 @@ namespace JonathanPolakowPROG7312POE
       {
          try
          {
-            List<Panel> NewRemainingShelves = new List<Panel>(TopShelves);
-            NewRemainingShelves.AddRange(BottomShelves);
+            List<Panel> NewRemainingShelves = new List<Panel>(AnswerShelves);
+            NewRemainingShelves.AddRange(QuestionShelves);
             List<Panel> IterationList = new List<Panel>(NewRemainingShelves);
 
             foreach (Panel RPanel in IterationList)
@@ -344,63 +373,76 @@ namespace JonathanPolakowPROG7312POE
       {
          try
          {
-            List<string> BookOrder = new List<string>();
-            bool Valid = true;
-            int validCount = 0;
+            int placedAnswers = this.QuestionShelves.Count(panel1 => this.Books.Any(panel2 => AreLocationsEqual(panel1, panel2)));
 
-            //check if each top shelve has a book
-            foreach (Panel RPanel in TopShelves)
+            if (placedAnswers == 4)
             {
-               bool placed = false;
+               List<string> BookOrder = new List<string>();
+               bool Valid = true;
+               int validCount = 0;
 
-               foreach (Panel book in Books)
+               //get the location of all placed books
+               foreach (Panel panel in this.QuestionShelves)
                {
-                  if (book.Location == RPanel.Location)
+                  bool populated = false;
+                  foreach (Panel book in this.Books)
                   {
-                     BookOrder.Add(book.Name);
-                     placed = true;
+                     if (book.Location == panel.Location)
+                     {
+                        BookOrder.Add(book.Name);
+                        populated = true;
+                     }
+                  }
+                  if (populated != true)
+                  {
+                     BookOrder.Add("null");
                   }
                }
 
-               //if the panel is empty the user has not finished placing the books
-               if (placed == false)
-               {
-                  Valid = false;
-                  BookOrder.Add(null);
-               }
-            }
 
-            //check the users order of the books
-            for (int i = 0; i < BookOrder.Count; i++)
-            {
-               // Compare the dictionary key at the current position with the list element at the same position.
-               if (SortedBooks.ElementAt(i).Key != BookOrder[i])
+               //check the users order of the books
+               for (int i = 0; i < BookOrder.Count; i++)
                {
-                  Valid = false;
+                  // Compare the dictionary key at the current position with the list element at the same position.
+                  if (SortedBooks.ElementAt(i).Key != BookOrder[i])
+                  {
+                     Valid = false;
+                  }
+                  else
+                  {
+                     validCount++;
+                  }
                }
-               else
+
+               if (validCount == 4)
                {
-                  validCount++;
+                  pgbProgress.Value = validCount;
+                  Success();
+                  return true;
                }
-            }
 
-            pgbProgress.Value = validCount;
-
-            if (Valid)
-            {
-               Success();
-               return true;
+               pgbProgress.Value = validCount;
             }
 
             return false;
          }
          catch (Exception ex)
          {
-            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.ToString());
             MessageBox.Show("Oops, something went wrong, please try again");
             return false;
          }
+      }
 
+      /// <summary>
+      /// Helper function to compare locations
+      /// </summary>
+      /// <param name="panel1"></param>
+      /// <param name="panel2"></param>
+      /// <returns></returns>
+      static bool AreLocationsEqual(Panel panel1, Panel panel2)
+      {
+         return panel1.Location == panel2.Location;
       }
 
       //-------------------------------------------------------------------------------------------
@@ -411,12 +453,16 @@ namespace JonathanPolakowPROG7312POE
       {
          try
          {
-            pgbProgress.Value = 10;
+            pgbProgress.Value = 4;
             tmrCountdown.Enabled = false;
 
             _Awards.AddNewEntry(timeLimit, countDown);
 
-            PlaySound("Success");
+            this.Invoke((Action)(() =>
+            {
+               sounds.PlaySound("Success");
+            }));
+
             MessageBox.Show("You Pass");
 
             foreach (Panel book in Books)
@@ -442,7 +488,12 @@ namespace JonathanPolakowPROG7312POE
          try
          {
             tmrCountdown.Enabled = false;
-            PlaySound("Fail");
+
+            this.Invoke((Action)(() =>
+            {
+               sounds.PlaySound("Fail");
+            }));
+
             MessageBox.Show("You Failed");
 
             foreach (Panel book in Books)
@@ -472,36 +523,6 @@ namespace JonathanPolakowPROG7312POE
 
       //-------------------------------------------------------------------------------------------
       /// <summary>
-      /// async method to play a sound effect
-      /// </summary>
-      /// <param name="url"></param>
-      private async void PlaySound(string url)
-      {
-         try
-         {
-            //needs to use await and invoke as WindowsMediaPlayer is not thread safe
-            //caused issues that were solved by adding both.
-            await Task.Run(() =>
-            {
-               this.Invoke((Action)(() =>
-               {
-                  WMPLib.WindowsMediaPlayer WMPPlaySound = new WMPLib.WindowsMediaPlayer();
-                  WMPPlaySound.URL = url + ".mp3";
-                  WMPPlaySound.controls.play();
-               }));
-            });
-         }
-         catch (Exception ex)
-         {
-            Console.WriteLine(ex.Message);
-            //I am aware that empty catches are not good practice, in this case they work the best
-            //This method plays sound effects, thus it is called alot, if a thredding or other issue happens then this catch prevents a crash 
-            //displaying a popup is overkill and will disrupt the user experiance, not playing a sound effect is a better outcome
-         }
-      }
-
-      //-------------------------------------------------------------------------------------------
-      /// <summary>
       /// reset button, 
       /// </summary>
       /// <param name="sender"></param>
@@ -519,8 +540,8 @@ namespace JonathanPolakowPROG7312POE
       {
          try
          {
-            tmrCountdown.Stop();
-            tmrCountdown.Dispose();
+            //tmrCountdown.Stop();
+            //tmrCountdown.Dispose();
 
             if (this.ParentForm is Form1 mainForm)
             {
@@ -533,51 +554,6 @@ namespace JonathanPolakowPROG7312POE
          {
             Console.WriteLine(ex.Message);
             MessageBox.Show("Oops, something went wrong, please try again");
-         }
-      }
-
-      //-------------------------------------------------------------------------------------------
-      /// <summary>
-      /// Bubble sort to loop through a dictionary and sort
-      /// this bubble has been tested and with all identical numbers it is able to sort the letters aswell
-      /// </summary>
-      /// <param name="dictionary"></param>
-      /// <returns></returns>
-      private static Dictionary<string, string> BubbleSort(Dictionary<string, string> dictionary)
-      {
-         try
-         {
-            //source: ChatGPT, and alot of manual fixing
-
-            var sortedPairs = dictionary.ToList();
-
-            for (int i = 0; i < sortedPairs.Count - 1; i++)
-            {
-               for (int j = 0; j < sortedPairs.Count - i - 1; j++)
-               {
-                  if (string.Compare(sortedPairs[j].Value, sortedPairs[j + 1].Value, StringComparison.Ordinal) > 0)
-                  {
-                     var temp = sortedPairs[j];
-                     sortedPairs[j] = sortedPairs[j + 1];
-                     sortedPairs[j + 1] = temp;
-                  }
-               }
-            }
-
-            var sortedDictionary = new Dictionary<string, string>();
-
-            foreach (var pair in sortedPairs)
-            {
-               sortedDictionary.Add(pair.Key, pair.Value);
-            }
-
-            return sortedDictionary;
-         }
-         catch (Exception ex)
-         {
-            Console.WriteLine(ex.Message);
-            MessageBox.Show("Oops, something went wrong, please try again");
-            return dictionary;
          }
       }
    }

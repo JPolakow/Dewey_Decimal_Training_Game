@@ -1,12 +1,11 @@
-﻿//Jonathan Polakow
-//ST10081881
-//PROG7312 POE Part 2
-
+﻿using System;
 using System.Collections.Generic;
+using System.Security.Policy;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using WMPLib;
 
-namespace JonathanPolakowPROG7312POE
+namespace JonathanPolakowPROG7312Part1
 {
    internal class PlayMusic
    {
@@ -32,8 +31,6 @@ namespace JonathanPolakowPROG7312POE
             {
                await Task.Run(() =>
                {
-                  //WindowsMediaPlayer is not thread safe so extra precautions need to be taken
-                  //such as running it on the main thread and a empty catch
                   WindowsMediaPlayer WMPPlaySound = new WindowsMediaPlayer();
                   WMPPlaySound.URL = "chillmusic.mp3";
                   WMPPlaySound.settings.setMode("loop", true);
@@ -44,13 +41,7 @@ namespace JonathanPolakowPROG7312POE
                });
             }
          }
-         catch
-         {
-            //I am aware that empty catches are not good practice, in this case they work the best
-            //This method plays sound effects, thus it is called alot, if a thredding or other issue happens then this catch prevents a crash 
-            //displaying a popup is overkill and will disrupt the user experiance, not playing a sound effect is a better outcome
-         }
+         catch { }
       }
    }
 }
-//-----------------------------------------END OF FILE---------------------------------------------
