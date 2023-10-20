@@ -22,7 +22,7 @@ namespace JonathanPolakowPROG7312POE
          pnlChooseDifficulty.Visible = false;
          pnlMenu.Visible = true;
          pnlPlaceBooks.Visible = false;
-         PlayMusic();
+        // PlayMusic();
       }
 
       //-------------------------------------------------------------------------------------------
@@ -32,32 +32,6 @@ namespace JonathanPolakowPROG7312POE
       private async void PlayMusic()
       {
          playMusic.PlayMusicMethod();
-      }
-
-      //-------------------------------------------------------------------------------------------
-      /// <summary>
-      /// method to load the replace book user control
-      /// needs to load programily or it will be created with a empty timelimit
-      /// </summary>
-      /// <param name="timeLimit"></param>
-      private void LoadPlaceBooks(int timeLimit)
-      {
-         try
-         {
-            //bookShelf1 is located in the designer code
-            bookShelf1 = new BookShelf(timeLimit);
-            bookShelf1.Left = (this.ClientSize.Width - bookShelf1.Width) / 2;
-            bookShelf1.Top = (this.ClientSize.Height - bookShelf1.Height) / 2;
-            pnlPlaceBooks.Controls.Add(bookShelf1);
-
-            pnlChooseDifficulty.Visible = false;
-            pnlPlaceBooks.Visible = true;
-         }
-         catch (Exception ex)
-         {
-            Console.WriteLine(ex.Message);
-            MessageBox.Show("Oops, something went wrong, please try again");
-         }
       }
 
       //-------------------------------------------------------------------------------------------
@@ -91,6 +65,32 @@ namespace JonathanPolakowPROG7312POE
       {
          pnlMenu.Visible = false;
          pnlChooseDifficulty.Visible = true;
+      }
+     
+      //-------------------------------------------------------------------------------------------
+      /// <summary>
+      /// method to load the replace book user control
+      /// needs to load programily or it will be created with a empty timelimit
+      /// </summary>
+      /// <param name="timeLimit"></param>
+      private void LoadPlaceBooks(int timeLimit)
+      {
+         try
+         {
+            //bookShelf1 is located in the designer code
+            bookShelf1 = new BookShelf(timeLimit);
+            bookShelf1.Left = (this.ClientSize.Width - bookShelf1.Width) / 2;
+            bookShelf1.Top = (this.ClientSize.Height - bookShelf1.Height) / 2;
+            pnlPlaceBooks.Controls.Add(bookShelf1);
+
+            pnlChooseDifficulty.Visible = false;
+            pnlPlaceBooks.Visible = true;
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+            MessageBox.Show("Oops, something went wrong, please try again");
+         }
       }
 
       //-------------------------------------------------------------------------------------------
@@ -165,9 +165,38 @@ namespace JonathanPolakowPROG7312POE
       {
          CloseUserControl();
       }
+
+
+      private void LoadIdentifyAreas()
+      {
+         try
+         {
+            //bookShelf1 is located in the designer code
+            identifyAreas1 = new IdentifyAreas(0);
+            identifyAreas1.Left = (this.ClientSize.Width - identifyAreas1.Width) / 2;
+            identifyAreas1.Top = (this.ClientSize.Height - identifyAreas1.Height) / 2;
+            pnlIdentifyAreas.Controls.Add(identifyAreas1);
+
+            pnlMenu.Visible = false;
+            pnlIdentifyAreas.Visible = true;
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+            MessageBox.Show("Oops, something went wrong, please try again");
+         }
+      }
+      private void btnIdentifyAreas_Click(object sender, EventArgs e)
+      {
+         LoadIdentifyAreas();
+      }
    }
 }
 //-----------------------------------------END OF FILE---------------------------------------------
 
-//to do
-//error handeling
+/*TO DO
+ * move play sound to a seperate class 
+ * front end
+ * uncomment play music
+ * fix play music delay
+ */

@@ -75,7 +75,16 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IdentifyAreas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="IdentifyAreas.Designer.cs">
+      <DependentUpon>IdentifyAreas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IdentifyAreasWorker.cs" />
+    <Compile Include="ListShuffle.cs" />
     <Compile Include="PlayMusic.cs" />
+    <Compile Include="PlaySounds.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Awards.resx">
@@ -86,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IdentifyAreas.resx">
+      <DependentUpon>IdentifyAreas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
