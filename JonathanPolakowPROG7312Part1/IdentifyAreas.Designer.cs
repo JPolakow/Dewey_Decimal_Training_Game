@@ -58,17 +58,18 @@
          this.btnExit.TabIndex = 35;
          this.btnExit.Text = "EXIT";
          this.btnExit.UseVisualStyleBackColor = true;
+         this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
          // 
          // btnReset
          // 
          this.btnReset.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btnReset.Location = new System.Drawing.Point(95, 32);
+         this.btnReset.Location = new System.Drawing.Point(0, 66);
          this.btnReset.Name = "btnReset";
          this.btnReset.Size = new System.Drawing.Size(108, 30);
          this.btnReset.TabIndex = 36;
          this.btnReset.Text = "Restart";
          this.btnReset.UseVisualStyleBackColor = true;
-         this.btnReset.Visible = false;
+         this.btnReset.Click += new System.EventHandler(this.BtnReset_Click);
          // 
          // pgbProgress
          // 
@@ -98,7 +99,7 @@
          this.pnlQuestion6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlQuestion6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
          this.pnlQuestion6.Location = new System.Drawing.Point(471, 366);
-         this.pnlQuestion6.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+         this.pnlQuestion6.Margin = new System.Windows.Forms.Padding(1);
          this.pnlQuestion6.Name = "pnlQuestion6";
          this.pnlQuestion6.Size = new System.Drawing.Size(200, 57);
          this.pnlQuestion6.TabIndex = 39;
@@ -109,7 +110,7 @@
          this.pnlQuestion4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlQuestion4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
          this.pnlQuestion4.Location = new System.Drawing.Point(471, 254);
-         this.pnlQuestion4.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+         this.pnlQuestion4.Margin = new System.Windows.Forms.Padding(1);
          this.pnlQuestion4.Name = "pnlQuestion4";
          this.pnlQuestion4.Size = new System.Drawing.Size(200, 57);
          this.pnlQuestion4.TabIndex = 43;
@@ -120,7 +121,7 @@
          this.pnlQuestion7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlQuestion7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
          this.pnlQuestion7.Location = new System.Drawing.Point(471, 423);
-         this.pnlQuestion7.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+         this.pnlQuestion7.Margin = new System.Windows.Forms.Padding(1);
          this.pnlQuestion7.Name = "pnlQuestion7";
          this.pnlQuestion7.Size = new System.Drawing.Size(200, 57);
          this.pnlQuestion7.TabIndex = 45;
@@ -131,7 +132,7 @@
          this.pnlQuestion3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlQuestion3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
          this.pnlQuestion3.Location = new System.Drawing.Point(471, 198);
-         this.pnlQuestion3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+         this.pnlQuestion3.Margin = new System.Windows.Forms.Padding(1);
          this.pnlQuestion3.Name = "pnlQuestion3";
          this.pnlQuestion3.Size = new System.Drawing.Size(200, 57);
          this.pnlQuestion3.TabIndex = 42;
@@ -142,7 +143,7 @@
          this.pnlQuestion5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlQuestion5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
          this.pnlQuestion5.Location = new System.Drawing.Point(471, 310);
-         this.pnlQuestion5.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+         this.pnlQuestion5.Margin = new System.Windows.Forms.Padding(1);
          this.pnlQuestion5.Name = "pnlQuestion5";
          this.pnlQuestion5.Size = new System.Drawing.Size(200, 57);
          this.pnlQuestion5.TabIndex = 44;
@@ -153,7 +154,7 @@
          this.pnlQuestion2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlQuestion2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
          this.pnlQuestion2.Location = new System.Drawing.Point(471, 142);
-         this.pnlQuestion2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+         this.pnlQuestion2.Margin = new System.Windows.Forms.Padding(1);
          this.pnlQuestion2.Name = "pnlQuestion2";
          this.pnlQuestion2.Size = new System.Drawing.Size(200, 57);
          this.pnlQuestion2.TabIndex = 41;
@@ -164,7 +165,7 @@
          this.pnlQuestion1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlQuestion1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
          this.pnlQuestion1.Location = new System.Drawing.Point(471, 85);
-         this.pnlQuestion1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+         this.pnlQuestion1.Margin = new System.Windows.Forms.Padding(1);
          this.pnlQuestion1.Name = "pnlQuestion1";
          this.pnlQuestion1.Size = new System.Drawing.Size(200, 57);
          this.pnlQuestion1.TabIndex = 40;
@@ -174,8 +175,8 @@
          this.pnlAnswer3.BackColor = System.Drawing.Color.Transparent;
          this.pnlAnswer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlAnswer3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.pnlAnswer3.Location = new System.Drawing.Point(190, 233);
-         this.pnlAnswer3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+         this.pnlAnswer3.Location = new System.Drawing.Point(190, 198);
+         this.pnlAnswer3.Margin = new System.Windows.Forms.Padding(1);
          this.pnlAnswer3.Name = "pnlAnswer3";
          this.pnlAnswer3.Size = new System.Drawing.Size(100, 57);
          this.pnlAnswer3.TabIndex = 45;
@@ -185,8 +186,8 @@
          this.pnlAnswer2.BackColor = System.Drawing.Color.Transparent;
          this.pnlAnswer2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlAnswer2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.pnlAnswer2.Location = new System.Drawing.Point(190, 177);
-         this.pnlAnswer2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+         this.pnlAnswer2.Location = new System.Drawing.Point(190, 142);
+         this.pnlAnswer2.Margin = new System.Windows.Forms.Padding(1);
          this.pnlAnswer2.Name = "pnlAnswer2";
          this.pnlAnswer2.Size = new System.Drawing.Size(100, 57);
          this.pnlAnswer2.TabIndex = 44;
@@ -196,8 +197,8 @@
          this.pnlAnswer1.BackColor = System.Drawing.Color.Transparent;
          this.pnlAnswer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlAnswer1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.pnlAnswer1.Location = new System.Drawing.Point(190, 121);
-         this.pnlAnswer1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+         this.pnlAnswer1.Location = new System.Drawing.Point(190, 85);
+         this.pnlAnswer1.Margin = new System.Windows.Forms.Padding(1);
          this.pnlAnswer1.Name = "pnlAnswer1";
          this.pnlAnswer1.Size = new System.Drawing.Size(100, 57);
          this.pnlAnswer1.TabIndex = 43;
@@ -207,8 +208,8 @@
          this.pnlBook3.BackColor = System.Drawing.Color.Transparent;
          this.pnlBook3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlBook3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.pnlBook3.Location = new System.Drawing.Point(87, 233);
-         this.pnlBook3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+         this.pnlBook3.Location = new System.Drawing.Point(155, 206);
+         this.pnlBook3.Margin = new System.Windows.Forms.Padding(1);
          this.pnlBook3.Name = "pnlBook3";
          this.pnlBook3.Size = new System.Drawing.Size(100, 57);
          this.pnlBook3.TabIndex = 48;
@@ -218,8 +219,8 @@
          this.pnlBook2.BackColor = System.Drawing.Color.Transparent;
          this.pnlBook2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlBook2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.pnlBook2.Location = new System.Drawing.Point(87, 177);
-         this.pnlBook2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+         this.pnlBook2.Location = new System.Drawing.Point(155, 147);
+         this.pnlBook2.Margin = new System.Windows.Forms.Padding(1);
          this.pnlBook2.Name = "pnlBook2";
          this.pnlBook2.Size = new System.Drawing.Size(100, 57);
          this.pnlBook2.TabIndex = 47;
@@ -229,8 +230,8 @@
          this.pnlBook1.BackColor = System.Drawing.Color.Transparent;
          this.pnlBook1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlBook1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.pnlBook1.Location = new System.Drawing.Point(87, 121);
-         this.pnlBook1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+         this.pnlBook1.Location = new System.Drawing.Point(155, 88);
+         this.pnlBook1.Margin = new System.Windows.Forms.Padding(1);
          this.pnlBook1.Name = "pnlBook1";
          this.pnlBook1.Size = new System.Drawing.Size(100, 57);
          this.pnlBook1.TabIndex = 46;
@@ -240,8 +241,8 @@
          this.pnlBook4.BackColor = System.Drawing.Color.Transparent;
          this.pnlBook4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlBook4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.pnlBook4.Location = new System.Drawing.Point(87, 289);
-         this.pnlBook4.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+         this.pnlBook4.Location = new System.Drawing.Point(155, 265);
+         this.pnlBook4.Margin = new System.Windows.Forms.Padding(1);
          this.pnlBook4.Name = "pnlBook4";
          this.pnlBook4.Size = new System.Drawing.Size(100, 57);
          this.pnlBook4.TabIndex = 49;
@@ -251,8 +252,8 @@
          this.pnlAnswers4.BackColor = System.Drawing.Color.Transparent;
          this.pnlAnswers4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlAnswers4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.pnlAnswers4.Location = new System.Drawing.Point(190, 289);
-         this.pnlAnswers4.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+         this.pnlAnswers4.Location = new System.Drawing.Point(190, 254);
+         this.pnlAnswers4.Margin = new System.Windows.Forms.Padding(1);
          this.pnlAnswers4.Name = "pnlAnswers4";
          this.pnlAnswers4.Size = new System.Drawing.Size(100, 57);
          this.pnlAnswers4.TabIndex = 46;

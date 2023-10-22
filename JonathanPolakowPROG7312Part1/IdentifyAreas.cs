@@ -3,15 +3,10 @@
 //PROG7312 POE Part 2
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace JonathanPolakowPROG7312POE
@@ -44,10 +39,6 @@ namespace JonathanPolakowPROG7312POE
       /// </summary>
       private Dictionary<string, string> SortedBooks = new Dictionary<string, string>();
       /// <summary>
-      /// a list containing the correct orders the answer to the questions must be in, for blank answers its = null
-      /// </summary>
-      private List<string> CorrectOrder = new List<string>();
-      /// <summary>
       /// random object
       /// </summary>
       private Random rnd = new Random();
@@ -67,7 +58,9 @@ namespace JonathanPolakowPROG7312POE
       /// instance of the worker class made for this game
       /// </summary>
       IdentifyAreasWorker worker = new IdentifyAreasWorker();
-      //instance of the worker class made for this game
+      /// <summary>
+      /// instance of the worker class made for this game
+      /// </summary>
       PlaySounds sounds = new PlaySounds();
       #endregion 
 
@@ -76,10 +69,46 @@ namespace JonathanPolakowPROG7312POE
          timeLimit = Timelimit;
          countDown = timeLimit;
          InitializeComponent();
-         FilterPanelsIntoLists();
-         PopulateBooks();
          StartGame();
       }
+
+      //-------------------------------------------------------------------------------------------
+      /// <summary>
+      /// initialiser method to set up the timer
+      /// </summary>
+      private void StartGame()
+      {
+         try
+         {
+
+
+            FilterPanelsIntoLists();
+            PopulateBooks();
+
+            tmrCountdown = new System.Windows.Forms.Timer();
+            tmrCountdown.Tick += new EventHandler(tmrCountdown_Tick);
+            tmrCountdown.Interval = 1000; // 1 second
+
+            if (timeLimit > 0)
+            {
+               tmrCountdown.Start();
+               lblCountdown.Text = timeLimit.ToString();
+               lblCountdown.Visible = true;
+            }
+
+            foreach (Panel book in Books)
+            {
+               book.Enabled = true;
+            }
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+            MessageBox.Show("Oops, something went wrong, please try again");
+            BackToMenu();
+         }
+      }
+
 
       //-------------------------------------------------------------------------------------------
       /// <summary>
@@ -100,22 +129,22 @@ namespace JonathanPolakowPROG7312POE
                   ControlExtension.Draggable(panel, true);
                   panel.MouseDown += Panel_MouseDown;
                   panel.MouseUp += Panel_MouseUp;
-                  panel.BackColor = RandomBrightColor();
+                  panel.BackColor = worker.RandomBrightColor();
                }
 
                if (panel.Name.Contains("Answer"))
                {
                   AnswerShelves.Add(panel);
                   RemainingShelves.Add(panel);
-                  panel.BackColor = RandomBrightColor();
-                  //panel.Visible = false;
+                  panel.BackColor = worker.RandomBrightColor();
+                  panel.Visible = false;
                }
 
                if (panel.Name.Contains("Question"))
                {
                   QuestionShelves.Add(panel);
                   RemainingShelves.Add(panel);
-                  panel.BackColor = RandomBrightColor();
+                  panel.BackColor = Color.FromArgb(160, 82, 45);
                   //panel.Visible = false;
                }
             }
@@ -123,33 +152,6 @@ namespace JonathanPolakowPROG7312POE
             Books = Books.OrderBy(panel => panel.Name).ToList();
             AnswerShelves = AnswerShelves.OrderBy(panel => panel.Name).ToList();
             QuestionShelves = QuestionShelves.OrderBy(panel => panel.Name).ToList();
-         }
-         catch (Exception ex)
-         {
-            Console.WriteLine(ex.Message);
-            MessageBox.Show("Oops, something went wrong, please try again");
-            BackToMenu();
-         }
-      }
-
-      //-------------------------------------------------------------------------------------------
-      /// <summary>
-      /// initialiser method to set up the timer
-      /// </summary>
-      private void StartGame()
-      {
-         try
-         {
-            tmrCountdown = new System.Windows.Forms.Timer();
-            tmrCountdown.Tick += new EventHandler(tmrCountdown_Tick);
-            tmrCountdown.Interval = 1000; // 1 second
-
-            if (timeLimit > 0)
-            {
-               tmrCountdown.Start();
-               lblCountdown.Text = timeLimit.ToString();
-               lblCountdown.Visible = true;
-            }
          }
          catch (Exception ex)
          {
@@ -176,10 +178,7 @@ namespace JonathanPolakowPROG7312POE
                tmrCountdown.Enabled = false;
                tmrCountdown.Stop();
 
-               if (CheckOrder())
-               {
-               }
-               else
+               if (!CheckOrder())
                {
                   Fail();
                }
@@ -297,7 +296,9 @@ namespace JonathanPolakowPROG7312POE
                   newAnswerLabel.Enabled = false;
                   Books[answerCount].Controls.Add(newAnswerLabel);
                   Books[answerCount].Name = shuffledDictionary.ElementAt(i).Key;
+                  Books[answerCount].Location = AnswerShelves[answerCount].Location;
                   answerCount++;
+
                }
 
                Label newLabel = new Label();
@@ -361,7 +362,6 @@ namespace JonathanPolakowPROG7312POE
             Console.WriteLine(ex.Message);
             MessageBox.Show("Oops, something went wrong, please try again");
          }
-
       }
 
       //-------------------------------------------------------------------------------------------
@@ -373,7 +373,7 @@ namespace JonathanPolakowPROG7312POE
       {
          try
          {
-            int placedAnswers = this.QuestionShelves.Count(panel1 => this.Books.Any(panel2 => AreLocationsEqual(panel1, panel2)));
+            int placedAnswers = this.QuestionShelves.Count(panel1 => this.Books.Any(panel2 => worker.AreLocationsEqual(panel1, panel2)));
 
             if (placedAnswers == 4)
             {
@@ -434,17 +434,6 @@ namespace JonathanPolakowPROG7312POE
          }
       }
 
-      /// <summary>
-      /// Helper function to compare locations
-      /// </summary>
-      /// <param name="panel1"></param>
-      /// <param name="panel2"></param>
-      /// <returns></returns>
-      static bool AreLocationsEqual(Panel panel1, Panel panel2)
-      {
-         return panel1.Location == panel2.Location;
-      }
-
       //-------------------------------------------------------------------------------------------
       /// <summary>
       /// method to execure then the users passes
@@ -458,10 +447,7 @@ namespace JonathanPolakowPROG7312POE
 
             _Awards.AddNewEntry(timeLimit, countDown);
 
-            this.Invoke((Action)(() =>
-            {
-               sounds.PlaySound("Success");
-            }));
+            this.Invoke((Action)(() => sounds.PlaySound("Success")));
 
             MessageBox.Show("You Pass");
 
@@ -489,10 +475,7 @@ namespace JonathanPolakowPROG7312POE
          {
             tmrCountdown.Enabled = false;
 
-            this.Invoke((Action)(() =>
-            {
-               sounds.PlaySound("Fail");
-            }));
+            this.Invoke((Action)(() => sounds.PlaySound("Fail")));
 
             MessageBox.Show("You Failed");
 
@@ -512,24 +495,16 @@ namespace JonathanPolakowPROG7312POE
 
       //-------------------------------------------------------------------------------------------
       /// <summary>
-      /// method to generate a random color with a bias towards a brighter color
-      /// </summary>
-      /// <returns></returns>
-      private Color RandomBrightColor()
-      {
-         Color randomColor = Color.FromArgb(rnd.Next(100, 200), rnd.Next(100, 200), rnd.Next(100, 200));
-         return randomColor;
-      }
-
-      //-------------------------------------------------------------------------------------------
-      /// <summary>
       /// reset button, 
       /// </summary>
       /// <param name="sender"></param>
       /// <param name="e"></param>
       private void BtnReset_Click(object sender, EventArgs e)
       {
-         BackToMenu();
+         if (this.ParentForm is Form1 mainForm)
+         {
+            mainForm.OpenGame();
+         }
       }
 
       //-------------------------------------------------------------------------------------------
@@ -540,9 +515,11 @@ namespace JonathanPolakowPROG7312POE
       {
          try
          {
-            //tmrCountdown.Stop();
-            //tmrCountdown.Dispose();
-
+            if (tmrCountdown != null)
+            {
+               tmrCountdown.Stop();
+               tmrCountdown.Dispose();
+            }
             if (this.ParentForm is Form1 mainForm)
             {
                mainForm.CloseUserControl();
@@ -555,6 +532,17 @@ namespace JonathanPolakowPROG7312POE
             Console.WriteLine(ex.Message);
             MessageBox.Show("Oops, something went wrong, please try again");
          }
+      }
+
+      //-------------------------------------------------------------------------------------------
+      /// <summary>
+      /// back button
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+      private void btnExit_Click(object sender, EventArgs e)
+      {
+         BackToMenu();
       }
    }
 }

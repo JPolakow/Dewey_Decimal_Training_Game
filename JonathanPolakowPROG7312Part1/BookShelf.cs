@@ -54,6 +54,10 @@ namespace JonathanPolakowPROG7312POE
       /// timer for the countdown
       /// </summary>
       private Timer tmrCountdown;
+      /// <summary>
+      /// instance of the worker class made for this game
+      /// </summary>
+      PlaySounds sounds = new PlaySounds();
 
       //-------------------------------------------------------------------------------------------
       /// <summary>
@@ -243,7 +247,7 @@ namespace JonathanPolakowPROG7312POE
             Panel ClosestPanel = PanelDistances.First(pair => pair.Value == PanelDistances.Values.Min()).Key;
             book.Location = ClosestPanel.Location;
 
-            PlaySound("BookPlace");
+            sounds.PlaySound("BookPlace");
             FilterRemaining();
             CheckOrder();
          }
@@ -416,7 +420,7 @@ namespace JonathanPolakowPROG7312POE
 
             _Awards.AddNewEntry(timeLimit, countDown);
 
-            PlaySound("Success");
+            sounds.PlaySound("Success");
             MessageBox.Show("You Pass");
 
             foreach (Panel book in Books)
@@ -442,7 +446,7 @@ namespace JonathanPolakowPROG7312POE
          try
          {
             tmrCountdown.Enabled = false;
-            PlaySound("Fail");
+            sounds.PlaySound("Fail");
             MessageBox.Show("You Failed");
 
             foreach (Panel book in Books)
@@ -472,43 +476,16 @@ namespace JonathanPolakowPROG7312POE
 
       //-------------------------------------------------------------------------------------------
       /// <summary>
-      /// async method to play a sound effect
-      /// </summary>
-      /// <param name="url"></param>
-      private async void PlaySound(string url)
-      {
-         try
-         {
-            //needs to use await and invoke as WindowsMediaPlayer is not thread safe
-            //caused issues that were solved by adding both.
-            await Task.Run(() =>
-            {
-               this.Invoke((Action)(() =>
-               {
-                  WMPLib.WindowsMediaPlayer WMPPlaySound = new WMPLib.WindowsMediaPlayer();
-                  WMPPlaySound.URL = url + ".mp3";
-                  WMPPlaySound.controls.play();
-               }));
-            });
-         }
-         catch (Exception ex)
-         {
-            Console.WriteLine(ex.Message);
-            //I am aware that empty catches are not good practice, in this case they work the best
-            //This method plays sound effects, thus it is called alot, if a thredding or other issue happens then this catch prevents a crash 
-            //displaying a popup is overkill and will disrupt the user experiance, not playing a sound effect is a better outcome
-         }
-      }
-
-      //-------------------------------------------------------------------------------------------
-      /// <summary>
       /// reset button, 
       /// </summary>
       /// <param name="sender"></param>
       /// <param name="e"></param>
       private void BtnReset_Click(object sender, EventArgs e)
       {
-         BackToMenu();
+         if (this.ParentForm is Form1 mainForm)
+         {
+            mainForm.OpenGame();
+         }
       }
 
       //-------------------------------------------------------------------------------------------

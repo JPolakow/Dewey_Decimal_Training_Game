@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace JonathanPolakowPROG7312POE
@@ -26,6 +25,8 @@ namespace JonathanPolakowPROG7312POE
 
       private Random rnd = new Random();
 
+      //-------------------------------------------------------------------------------------------
+      //
       public Dictionary<string, string> GenerateOrder()
       {
          try
@@ -76,6 +77,29 @@ namespace JonathanPolakowPROG7312POE
             MessageBox.Show("Oops, something went wrong, please try again");
             return null;
          }
+      }
+
+      //-------------------------------------------------------------------------------------------
+      /// <summary>
+      /// Helper function to compare locations
+      /// </summary>
+      /// <param name="panel1"></param>
+      /// <param name="panel2"></param>
+      /// <returns></returns>
+      public bool AreLocationsEqual(Panel panel1, Panel panel2)
+      {
+         return panel1.Location == panel2.Location;
+      }
+
+      //-------------------------------------------------------------------------------------------
+      /// <summary>
+      /// method to generate a random color with a bias towards a brighter color
+      /// </summary>
+      /// <returns></returns>
+      public Color RandomBrightColor()
+      {
+         Color randomColor = Color.FromArgb(rnd.Next(100, 200), rnd.Next(100, 200), rnd.Next(100, 200));
+         return randomColor;
       }
    }
 }

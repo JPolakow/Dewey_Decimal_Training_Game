@@ -8,6 +8,9 @@ namespace JonathanPolakowPROG7312POE
 {
    internal class PlaySounds
    {
+
+      private WMPLib.WindowsMediaPlayer WMPPlaySound;
+
       //-------------------------------------------------------------------------------------------
       /// <summary>
       /// async method to play a sound effect
@@ -15,17 +18,17 @@ namespace JonathanPolakowPROG7312POE
       /// <param name="url"></param>
       public async void PlaySound(string url)
       {
-         /*try
+         try
          {
-            //needs to use await and invoke as WindowsMediaPlayer is not thread safe
-            //caused issues that were solved by adding both.
+            if (WMPPlaySound == null)
+            {
+               WMPPlaySound = new WMPLib.WindowsMediaPlayer();
+            }
+
             await Task.Run(() =>
             {
-
-               WMPLib.WindowsMediaPlayer WMPPlaySound = new WMPLib.WindowsMediaPlayer();
                WMPPlaySound.URL = url + ".mp3";
                WMPPlaySound.controls.play();
-
             });
          }
          catch (Exception ex)
@@ -34,7 +37,7 @@ namespace JonathanPolakowPROG7312POE
             //I am aware that empty catches are not good practice, in this case they work the best
             //This method plays sound effects, thus it is called alot, if a thredding or other issue happens then this catch prevents a crash 
             //displaying a popup is overkill and will disrupt the user experiance, not playing a sound effect is a better outcome
-         }*/
+         }
       }
    }
 }
