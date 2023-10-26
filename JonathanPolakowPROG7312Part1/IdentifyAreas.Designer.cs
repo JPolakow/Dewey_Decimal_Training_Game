@@ -44,9 +44,9 @@
          this.pnlAnswer1 = new System.Windows.Forms.Panel();
          this.pnlBook3 = new System.Windows.Forms.Panel();
          this.pnlBook2 = new System.Windows.Forms.Panel();
-         this.pnlBook1 = new System.Windows.Forms.Panel();
          this.pnlBook4 = new System.Windows.Forms.Panel();
          this.pnlAnswers4 = new System.Windows.Forms.Panel();
+         this.pnlBook1 = new System.Windows.Forms.Panel();
          this.SuspendLayout();
          // 
          // btnExit
@@ -205,7 +205,8 @@
          // 
          // pnlBook3
          // 
-         this.pnlBook3.BackColor = System.Drawing.Color.Transparent;
+         this.pnlBook3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+         this.pnlBook3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
          this.pnlBook3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlBook3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
          this.pnlBook3.Location = new System.Drawing.Point(155, 206);
@@ -216,7 +217,8 @@
          // 
          // pnlBook2
          // 
-         this.pnlBook2.BackColor = System.Drawing.Color.Transparent;
+         this.pnlBook2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+         this.pnlBook2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
          this.pnlBook2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlBook2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
          this.pnlBook2.Location = new System.Drawing.Point(155, 147);
@@ -225,20 +227,10 @@
          this.pnlBook2.Size = new System.Drawing.Size(100, 57);
          this.pnlBook2.TabIndex = 47;
          // 
-         // pnlBook1
-         // 
-         this.pnlBook1.BackColor = System.Drawing.Color.Transparent;
-         this.pnlBook1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-         this.pnlBook1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.pnlBook1.Location = new System.Drawing.Point(155, 88);
-         this.pnlBook1.Margin = new System.Windows.Forms.Padding(1);
-         this.pnlBook1.Name = "pnlBook1";
-         this.pnlBook1.Size = new System.Drawing.Size(100, 57);
-         this.pnlBook1.TabIndex = 46;
-         // 
          // pnlBook4
          // 
-         this.pnlBook4.BackColor = System.Drawing.Color.Transparent;
+         this.pnlBook4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+         this.pnlBook4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
          this.pnlBook4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlBook4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
          this.pnlBook4.Location = new System.Drawing.Point(155, 265);
@@ -257,6 +249,18 @@
          this.pnlAnswers4.Name = "pnlAnswers4";
          this.pnlAnswers4.Size = new System.Drawing.Size(100, 57);
          this.pnlAnswers4.TabIndex = 46;
+         // 
+         // pnlBook1
+         // 
+         this.pnlBook1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+         this.pnlBook1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+         this.pnlBook1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+         this.pnlBook1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+         this.pnlBook1.Location = new System.Drawing.Point(155, 88);
+         this.pnlBook1.Margin = new System.Windows.Forms.Padding(1);
+         this.pnlBook1.Name = "pnlBook1";
+         this.pnlBook1.Size = new System.Drawing.Size(100, 57);
+         this.pnlBook1.TabIndex = 46;
          // 
          // IdentifyAreas
          // 
@@ -282,6 +286,7 @@
          this.Controls.Add(this.pgbProgress);
          this.Controls.Add(this.btnReset);
          this.Controls.Add(this.btnExit);
+         this.DoubleBuffered = true;
          this.Name = "IdentifyAreas";
          this.Size = new System.Drawing.Size(715, 557);
          this.ResumeLayout(false);

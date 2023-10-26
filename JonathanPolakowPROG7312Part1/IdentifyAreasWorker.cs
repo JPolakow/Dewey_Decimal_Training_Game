@@ -9,18 +9,18 @@ namespace JonathanPolakowPROG7312POE
    internal class IdentifyAreasWorker
    {
       //list of the dewey decimals and their corresponding categorty
-      private Dictionary<string, string> DeweyToCategoryReference = new Dictionary<string, string>
+      private SortedDictionary<string, string> DeweyToCategoryReference = new SortedDictionary<string, string>
         {
-            { "000", "Generalities" },
-            { "100", "Philosophy" },
-            { "200", "Religion" },
-            { "300", "Social Sciences" },
-            { "400", "Language" },
-            { "500", "Natural Sciences and Mathematics" },
-            { "600", "Technology" },
-            { "700", "Arts and Recreation" },
-            { "800", "Literature" },
-            { "900", "History and Geography" }
+            { "000-099", "Generalities" },
+            { "100-199", "Philosophy & Psychology" },
+            { "200-299", "Religion" },
+            { "300-399", "Social Science" },
+            { "400-499", "Language" },
+            { "500-599", "Sciences & Mathematics" },
+            { "600-699", "Technology" },
+            { "700-799", "Arts & Recreation" },
+            { "800-899", "Literature" },
+            { "900-999", "History & Geography" }
         };
 
       private Random rnd = new Random();

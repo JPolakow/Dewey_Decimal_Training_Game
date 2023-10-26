@@ -340,7 +340,7 @@
          this.btnExit.TabIndex = 34;
          this.btnExit.Text = "EXIT";
          this.btnExit.UseVisualStyleBackColor = true;
-         this.btnExit.Click += new System.EventHandler(this.BtnReset_Click);
+         this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
          // 
          // Book1
          // 
@@ -524,6 +524,7 @@
          this.Controls.Add(this.BottomShelf1);
          this.Controls.Add(this.BottomShelf0);
          this.Controls.Add(this.imgBackGround);
+         this.DoubleBuffered = true;
          this.Margin = new System.Windows.Forms.Padding(1);
          this.Name = "BookShelf";
          this.Size = new System.Drawing.Size(715, 557);

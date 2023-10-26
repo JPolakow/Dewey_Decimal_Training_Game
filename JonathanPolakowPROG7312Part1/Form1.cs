@@ -24,11 +24,12 @@ namespace JonathanPolakowPROG7312POE
          pnlChooseDifficulty.Visible = false;
          pnlMenu.Visible = true;
          pnlPlaceBooks.Visible = false;
-         //PlayMusic();
+         PlayMusic();
 
+         selectDifficulty1 = new SelectDifficulty(this);
          selectDifficulty1.timeLimit += (sender, timeLimit) =>
          {
-            TimeLimit = timeLimit;
+            this.TimeLimit = timeLimit;
             OpenGame();
          };
       }
@@ -50,6 +51,8 @@ namespace JonathanPolakowPROG7312POE
       {
          try
          {
+            pnlChooseDifficulty.Controls.Clear();
+            pnlIdentifyAreas.Controls.Clear();
             pnlPlaceBooks.Controls.Clear();
             pnlAwards.Visible = false;
             pnlChooseDifficulty.Visible = false;
@@ -68,7 +71,7 @@ namespace JonathanPolakowPROG7312POE
       /// <summary>
       /// Method thats called when the UserControl is closed
       /// </summary>
-      public void restartUserControl(UserControl name)
+      public void RestartUserControl(UserControl name)
       {
          try
          {
@@ -103,11 +106,11 @@ namespace JonathanPolakowPROG7312POE
             pnlIdentifyAreas.Controls.Clear();
             pnlPlaceBooks.Controls.Clear();
 
-            switch (selectedGame)
+            switch (this.selectedGame)
             {
                case 1:
                   //bookShelf1 is located in the designer code
-                  bookShelf1 = new BookShelf(TimeLimit);
+                  bookShelf1 = new BookShelf(this.TimeLimit);
                   bookShelf1.Left = (this.ClientSize.Width - bookShelf1.Width) / 2;
                   bookShelf1.Top = (this.ClientSize.Height - bookShelf1.Height) / 2;
                   pnlPlaceBooks.Controls.Add(bookShelf1);
@@ -117,7 +120,7 @@ namespace JonathanPolakowPROG7312POE
                   break;
                case 2:
                   //identifyAreas1 is located in the designer code
-                  identifyAreas1 = new IdentifyAreas(TimeLimit);
+                  identifyAreas1 = new IdentifyAreas(this.TimeLimit);
                   identifyAreas1.Left = (this.ClientSize.Width - identifyAreas1.Width) / 2;
                   identifyAreas1.Top = (this.ClientSize.Height - identifyAreas1.Height) / 2;
                   pnlIdentifyAreas.Controls.Add(identifyAreas1);
@@ -136,15 +139,42 @@ namespace JonathanPolakowPROG7312POE
 
       //-------------------------------------------------------------------------------------------
       /// <summary>
+      /// method to create a insance of the select diff user control and pass it the local Form1 isntance
+      /// </summary>
+      private void ShowDiff()
+      {
+         
+         selectDifficulty1.Left = 0;
+         selectDifficulty1.Top = 0;
+         pnlChooseDifficulty.Controls.Add(selectDifficulty1);
+         pnlChooseDifficulty.Visible = true;
+      }
+
+      //-------------------------------------------------------------------------------------------
+      /// <summary>
       /// btnPlaceBooks_Click, calls select diff
       /// </summary>
       /// <param name="sender"></param>
       /// <param name="e"></param>
       private void BtnPlaceBooks_Click(object sender, EventArgs e)
       {
-         selectedGame = 1;
+         this.selectedGame = 1;
          pnlMenu.Visible = false;
          pnlChooseDifficulty.Visible = true;
+         ShowDiff();
+      }
+
+      //-------------------------------------------------------------------------------------------
+      /// <summary>
+      /// btnIdentifyAreas_Click, calls select diff
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+      private void btnIdentifyAreas_Click(object sender, EventArgs e)
+      {
+         this.selectedGame = 2;
+         pnlMenu.Visible = false;
+         ShowDiff();
       }
 
       //-------------------------------------------------------------------------------------------
@@ -164,34 +194,15 @@ namespace JonathanPolakowPROG7312POE
          pnlMenu.Visible = false;
          pnlAwards.Visible = true;
       }
-
-      //-------------------------------------------------------------------------------------------
-      /// <summary>
-      /// btnIdentifyAreas_Click, calls select diff
-      /// </summary>
-      /// <param name="sender"></param>
-      /// <param name="e"></param>
-      private void btnIdentifyAreas_Click(object sender, EventArgs e)
-      {
-         selectedGame = 2;
-         pnlMenu.Visible = false;
-         pnlChooseDifficulty.Visible = true;
-      }
    }
 }
 //-----------------------------------------END OF FILE---------------------------------------------
 
-/*TO DO
- * front end
- * uncomment play music
- * back button from diff
- * check that my front end code amout change is ok
- */
-
 /*CHANGED 
- * mocved play soudns to another class
+ * moved play sounds to another class
  * fixed reset
  * moved code out of form 1 into select difficulty user control
  * placed funualnaity into worker class
- * 
+ * added this.
+ * using a sorted dic
  */

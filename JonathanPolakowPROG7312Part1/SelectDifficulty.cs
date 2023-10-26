@@ -1,24 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//Jonathan Polakow
+//ST10081881
+//PROG7312 POE Part 2
+
+using System;
 using System.Windows.Forms;
 
 namespace JonathanPolakowPROG7312POE
 {
    public partial class SelectDifficulty : UserControl
    {
-    //  private Form1 mainForm;
-
+      private Form1 mainForm;
       public event EventHandler<int> timeLimit;
 
-      public SelectDifficulty()
+      public SelectDifficulty(Form1 form1)
       {
          InitializeComponent();
+         this.mainForm = form1;
       }
 
       //-------------------------------------------------------------------------------------------
@@ -29,8 +26,7 @@ namespace JonathanPolakowPROG7312POE
       /// <param name="e"></param>
       private void BtnCasual_Click(object sender, EventArgs e)
       {
-         //mainForm.LoadPlaceBooks(0);
-         timeLimit?.Invoke(this, 0);
+         this.timeLimit?.Invoke(this, 0);
       }
 
       //-------------------------------------------------------------------------------------------
@@ -41,8 +37,7 @@ namespace JonathanPolakowPROG7312POE
       /// <param name="e"></param>
       private void BtnEasy_Click(object sender, EventArgs e)
       {
-         //mainForm.LoadPlaceBooks(90);
-         timeLimit?.Invoke(this, 90);
+         this.timeLimit?.Invoke(this, 90);
       }
 
       //-------------------------------------------------------------------------------------------
@@ -53,8 +48,7 @@ namespace JonathanPolakowPROG7312POE
       /// <param name="e"></param>
       private void BtnMedium_Click(object sender, EventArgs e)
       {
-         //mainForm.LoadPlaceBooks(45);
-         timeLimit?.Invoke(this, 45);
+         this.timeLimit?.Invoke(this, 45);
       }
 
       //-------------------------------------------------------------------------------------------
@@ -65,8 +59,7 @@ namespace JonathanPolakowPROG7312POE
       /// <param name="e"></param>
       private void BtnHard_Click(object sender, EventArgs e)
       {
-         //mainForm.LoadPlaceBooks(15);
-         timeLimit?.Invoke(this, 15);
+         this.timeLimit?.Invoke(this, 15);
       }
 
       //-------------------------------------------------------------------------------------------
@@ -77,7 +70,7 @@ namespace JonathanPolakowPROG7312POE
       /// <param name="e"></param>
       private void BtnBack_Click(object sender, EventArgs e)
       {
-        // mainForm.CloseUserControl();
+         mainForm.CloseUserControl();
       }
    }
 }

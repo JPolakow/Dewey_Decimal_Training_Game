@@ -38,9 +38,7 @@
          this.pnlAwards = new System.Windows.Forms.Panel();
          this.pnlPlaceBooks = new System.Windows.Forms.Panel();
          this.pnlChooseDifficulty = new System.Windows.Forms.Panel();
-         this.selectDifficulty1 = new JonathanPolakowPROG7312POE.SelectDifficulty();
          this.pnlMenu.SuspendLayout();
-         this.pnlChooseDifficulty.SuspendLayout();
          this.SuspendLayout();
          // 
          // pnlIdentifyAreas
@@ -51,7 +49,7 @@
          this.pnlIdentifyAreas.Dock = System.Windows.Forms.DockStyle.Fill;
          this.pnlIdentifyAreas.Location = new System.Drawing.Point(0, 0);
          this.pnlIdentifyAreas.Name = "pnlIdentifyAreas";
-         this.pnlIdentifyAreas.Size = new System.Drawing.Size(829, 567);
+         this.pnlIdentifyAreas.Size = new System.Drawing.Size(805, 554);
          this.pnlIdentifyAreas.TabIndex = 2;
          this.pnlIdentifyAreas.Visible = false;
          // 
@@ -68,7 +66,7 @@
          this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
          this.pnlMenu.Location = new System.Drawing.Point(0, 0);
          this.pnlMenu.Name = "pnlMenu";
-         this.pnlMenu.Size = new System.Drawing.Size(829, 567);
+         this.pnlMenu.Size = new System.Drawing.Size(805, 554);
          this.pnlMenu.TabIndex = 1;
          // 
          // label1
@@ -77,16 +75,16 @@
          this.label1.BackColor = System.Drawing.Color.Transparent;
          this.label1.Font = new System.Drawing.Font("MV Boli", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-         this.label1.Location = new System.Drawing.Point(309, 175);
+         this.label1.Location = new System.Drawing.Point(327, 177);
          this.label1.Name = "label1";
-         this.label1.Size = new System.Drawing.Size(236, 34);
+         this.label1.Size = new System.Drawing.Size(181, 34);
          this.label1.TabIndex = 5;
-         this.label1.Text = "Select Difficulty";
+         this.label1.Text = "Select Game";
          // 
          // btnAwards
          // 
          this.btnAwards.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btnAwards.Location = new System.Drawing.Point(353, 316);
+         this.btnAwards.Location = new System.Drawing.Point(352, 316);
          this.btnAwards.Name = "btnAwards";
          this.btnAwards.Size = new System.Drawing.Size(130, 28);
          this.btnAwards.TabIndex = 3;
@@ -97,7 +95,7 @@
          // btn3
          // 
          this.btn3.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btn3.Location = new System.Drawing.Point(353, 282);
+         this.btn3.Location = new System.Drawing.Point(352, 282);
          this.btn3.Name = "btn3";
          this.btn3.Size = new System.Drawing.Size(130, 28);
          this.btn3.TabIndex = 2;
@@ -107,7 +105,7 @@
          // btnIdentifyAreas
          // 
          this.btnIdentifyAreas.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btnIdentifyAreas.Location = new System.Drawing.Point(353, 248);
+         this.btnIdentifyAreas.Location = new System.Drawing.Point(352, 248);
          this.btnIdentifyAreas.Name = "btnIdentifyAreas";
          this.btnIdentifyAreas.Size = new System.Drawing.Size(130, 28);
          this.btnIdentifyAreas.TabIndex = 1;
@@ -118,7 +116,7 @@
          // btnPlaceBooks
          // 
          this.btnPlaceBooks.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btnPlaceBooks.Location = new System.Drawing.Point(353, 214);
+         this.btnPlaceBooks.Location = new System.Drawing.Point(352, 214);
          this.btnPlaceBooks.Name = "btnPlaceBooks";
          this.btnPlaceBooks.Size = new System.Drawing.Size(130, 28);
          this.btnPlaceBooks.TabIndex = 0;
@@ -134,7 +132,7 @@
          this.pnlAwards.Dock = System.Windows.Forms.DockStyle.Fill;
          this.pnlAwards.Location = new System.Drawing.Point(0, 0);
          this.pnlAwards.Name = "pnlAwards";
-         this.pnlAwards.Size = new System.Drawing.Size(829, 567);
+         this.pnlAwards.Size = new System.Drawing.Size(805, 554);
          this.pnlAwards.TabIndex = 4;
          // 
          // pnlPlaceBooks
@@ -145,7 +143,7 @@
          this.pnlPlaceBooks.Dock = System.Windows.Forms.DockStyle.Fill;
          this.pnlPlaceBooks.Location = new System.Drawing.Point(0, 0);
          this.pnlPlaceBooks.Name = "pnlPlaceBooks";
-         this.pnlPlaceBooks.Size = new System.Drawing.Size(829, 567);
+         this.pnlPlaceBooks.Size = new System.Drawing.Size(805, 554);
          this.pnlPlaceBooks.TabIndex = 1;
          this.pnlPlaceBooks.Visible = false;
          // 
@@ -154,41 +152,31 @@
          this.pnlChooseDifficulty.BackColor = System.Drawing.Color.White;
          this.pnlChooseDifficulty.BackgroundImage = global::JonathanPolakowPROG7312POE.Properties.Resources.BookShelfBackground;
          this.pnlChooseDifficulty.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-         this.pnlChooseDifficulty.Controls.Add(this.selectDifficulty1);
          this.pnlChooseDifficulty.Dock = System.Windows.Forms.DockStyle.Fill;
          this.pnlChooseDifficulty.Location = new System.Drawing.Point(0, 0);
          this.pnlChooseDifficulty.Name = "pnlChooseDifficulty";
-         this.pnlChooseDifficulty.Size = new System.Drawing.Size(829, 567);
+         this.pnlChooseDifficulty.Size = new System.Drawing.Size(805, 554);
          this.pnlChooseDifficulty.TabIndex = 4;
-         // 
-         // selectDifficulty1
-         // 
-         this.selectDifficulty1.BackColor = System.Drawing.Color.Transparent;
-         this.selectDifficulty1.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.selectDifficulty1.Location = new System.Drawing.Point(0, 0);
-         this.selectDifficulty1.Name = "selectDifficulty1";
-         this.selectDifficulty1.Size = new System.Drawing.Size(829, 567);
-         this.selectDifficulty1.TabIndex = 0;
          // 
          // Form1
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(829, 567);
+         this.ClientSize = new System.Drawing.Size(805, 554);
+         this.Controls.Add(this.pnlMenu);
          this.Controls.Add(this.pnlChooseDifficulty);
          this.Controls.Add(this.pnlIdentifyAreas);
-         this.Controls.Add(this.pnlMenu);
          this.Controls.Add(this.pnlAwards);
          this.Controls.Add(this.pnlPlaceBooks);
-         this.Margin = new System.Windows.Forms.Padding(1);
+         this.DoubleBuffered = true;
+         this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
          this.MaximizeBox = false;
-         this.MaximumSize = new System.Drawing.Size(845, 606);
-         this.MinimumSize = new System.Drawing.Size(845, 606);
+         this.MaximumSize = new System.Drawing.Size(821, 593);
+         this.MinimumSize = new System.Drawing.Size(821, 593);
          this.Name = "Form1";
          this.Text = "Form1";
          this.pnlMenu.ResumeLayout(false);
          this.pnlMenu.PerformLayout();
-         this.pnlChooseDifficulty.ResumeLayout(false);
          this.ResumeLayout(false);
 
       }
@@ -202,8 +190,8 @@
       private System.Windows.Forms.Button btnPlaceBooks;
       private System.Windows.Forms.Panel pnlAwards;
       private BookShelf bookShelf1;
-      private SelectDifficulty selectDifficulty1;
       private IdentifyAreas identifyAreas1;
+      private SelectDifficulty selectDifficulty1;
       private Awards awards1;
       private System.Windows.Forms.Label label1;
       private System.Windows.Forms.Panel pnlIdentifyAreas;

@@ -39,7 +39,7 @@
          // btnBack
          // 
          this.btnBack.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btnBack.Location = new System.Drawing.Point(353, 367);
+         this.btnBack.Location = new System.Drawing.Point(346, 367);
          this.btnBack.Name = "btnBack";
          this.btnBack.Size = new System.Drawing.Size(130, 28);
          this.btnBack.TabIndex = 5;
@@ -53,7 +53,7 @@
          this.lblHeading.BackColor = System.Drawing.Color.Transparent;
          this.lblHeading.Font = new System.Drawing.Font("MV Boli", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.lblHeading.ForeColor = System.Drawing.SystemColors.ButtonFace;
-         this.lblHeading.Location = new System.Drawing.Point(309, 194);
+         this.lblHeading.Location = new System.Drawing.Point(294, 194);
          this.lblHeading.Name = "lblHeading";
          this.lblHeading.Size = new System.Drawing.Size(236, 34);
          this.lblHeading.TabIndex = 4;
@@ -62,7 +62,7 @@
          // btnHard
          // 
          this.btnHard.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btnHard.Location = new System.Drawing.Point(353, 333);
+         this.btnHard.Location = new System.Drawing.Point(346, 333);
          this.btnHard.Name = "btnHard";
          this.btnHard.Size = new System.Drawing.Size(130, 28);
          this.btnHard.TabIndex = 3;
@@ -73,7 +73,7 @@
          // btnMedium
          // 
          this.btnMedium.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btnMedium.Location = new System.Drawing.Point(353, 299);
+         this.btnMedium.Location = new System.Drawing.Point(346, 299);
          this.btnMedium.Name = "btnMedium";
          this.btnMedium.Size = new System.Drawing.Size(130, 28);
          this.btnMedium.TabIndex = 2;
@@ -84,7 +84,7 @@
          // btnEasy
          // 
          this.btnEasy.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btnEasy.Location = new System.Drawing.Point(353, 265);
+         this.btnEasy.Location = new System.Drawing.Point(346, 265);
          this.btnEasy.Name = "btnEasy";
          this.btnEasy.Size = new System.Drawing.Size(130, 28);
          this.btnEasy.TabIndex = 1;
@@ -95,7 +95,7 @@
          // btnCasual
          // 
          this.btnCasual.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btnCasual.Location = new System.Drawing.Point(353, 231);
+         this.btnCasual.Location = new System.Drawing.Point(346, 231);
          this.btnCasual.Name = "btnCasual";
          this.btnCasual.Size = new System.Drawing.Size(130, 28);
          this.btnCasual.TabIndex = 0;
@@ -114,6 +114,7 @@
          this.Controls.Add(this.btnMedium);
          this.Controls.Add(this.btnEasy);
          this.Controls.Add(this.btnCasual);
+         this.DoubleBuffered = true;
          this.Name = "SelectDifficulty";
          this.Size = new System.Drawing.Size(821, 593);
          this.ResumeLayout(false);

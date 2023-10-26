@@ -161,6 +161,7 @@
     <Content Include="bin\Debug\chillmusic.mp3" />
     <Content Include="bin\Debug\Fail.mp3" />
     <Content Include="bin\Debug\Success.mp3" />
+    <None Include="Resources\vertical_book_style.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

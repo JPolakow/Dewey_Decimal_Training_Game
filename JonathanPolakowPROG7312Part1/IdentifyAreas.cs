@@ -66,8 +66,8 @@ namespace JonathanPolakowPROG7312POE
 
       public IdentifyAreas(int Timelimit)
       {
-         timeLimit = Timelimit;
-         countDown = timeLimit;
+         this.timeLimit = Timelimit;
+         this.countDown = timeLimit;
          InitializeComponent();
          StartGame();
       }
@@ -85,13 +85,13 @@ namespace JonathanPolakowPROG7312POE
             FilterPanelsIntoLists();
             PopulateBooks();
 
-            tmrCountdown = new System.Windows.Forms.Timer();
-            tmrCountdown.Tick += new EventHandler(tmrCountdown_Tick);
-            tmrCountdown.Interval = 1000; // 1 second
+            this.tmrCountdown = new System.Windows.Forms.Timer();
+            this.tmrCountdown.Tick += new EventHandler(tmrCountdown_Tick);
+            this.tmrCountdown.Interval = 1000; // 1 second
 
             if (timeLimit > 0)
             {
-               tmrCountdown.Start();
+               this.tmrCountdown.Start();
                lblCountdown.Text = timeLimit.ToString();
                lblCountdown.Visible = true;
             }
@@ -125,7 +125,7 @@ namespace JonathanPolakowPROG7312POE
             {
                if (panel.Name.Contains("Book"))
                {
-                  Books.Add(panel);
+                  this.Books.Add(panel);
                   ControlExtension.Draggable(panel, true);
                   panel.MouseDown += Panel_MouseDown;
                   panel.MouseUp += Panel_MouseUp;
@@ -134,24 +134,23 @@ namespace JonathanPolakowPROG7312POE
 
                if (panel.Name.Contains("Answer"))
                {
-                  AnswerShelves.Add(panel);
-                  RemainingShelves.Add(panel);
+                  this.AnswerShelves.Add(panel);
+                  this.RemainingShelves.Add(panel);
                   panel.BackColor = worker.RandomBrightColor();
                   panel.Visible = false;
                }
 
                if (panel.Name.Contains("Question"))
                {
-                  QuestionShelves.Add(panel);
-                  RemainingShelves.Add(panel);
+                  this.QuestionShelves.Add(panel);
+                  this.RemainingShelves.Add(panel);
                   panel.BackColor = Color.FromArgb(160, 82, 45);
-                  //panel.Visible = false;
                }
             }
 
-            Books = Books.OrderBy(panel => panel.Name).ToList();
-            AnswerShelves = AnswerShelves.OrderBy(panel => panel.Name).ToList();
-            QuestionShelves = QuestionShelves.OrderBy(panel => panel.Name).ToList();
+            this.Books = Books.OrderBy(panel => panel.Name).ToList();
+            this.AnswerShelves = AnswerShelves.OrderBy(panel => panel.Name).ToList();
+            this.QuestionShelves = QuestionShelves.OrderBy(panel => panel.Name).ToList();
          }
          catch (Exception ex)
          {
@@ -171,12 +170,12 @@ namespace JonathanPolakowPROG7312POE
       {
          try
          {
-            countDown--;
+            this.countDown--;
 
-            if (countDown == 0)
+            if (this.countDown == 0)
             {
-               tmrCountdown.Enabled = false;
-               tmrCountdown.Stop();
+               this.tmrCountdown.Enabled = false;
+               this.tmrCountdown.Stop();
 
                if (!CheckOrder())
                {
@@ -213,7 +212,7 @@ namespace JonathanPolakowPROG7312POE
             {
                if (book.Location == panel.Location & !(RemainingShelves.Contains(panel)))
                {
-                  RemainingShelves.Add(panel);
+                  this.RemainingShelves.Add(panel);
                }
             }
          }
@@ -293,12 +292,13 @@ namespace JonathanPolakowPROG7312POE
                   newAnswerLabel.ForeColor = Color.Black;
                   newAnswerLabel.Top = Books[answerCount].Height / 2 - newAnswerLabel.Height;
                   newAnswerLabel.Height = newAnswerLabel.Height + 5;
+                  newAnswerLabel.Left = 3;
                   newAnswerLabel.Enabled = false;
-                  Books[answerCount].Controls.Add(newAnswerLabel);
-                  Books[answerCount].Name = shuffledDictionary.ElementAt(i).Key;
-                  Books[answerCount].Location = AnswerShelves[answerCount].Location;
+                  newAnswerLabel.UseMnemonic = false;
+                  this.Books[answerCount].Controls.Add(newAnswerLabel);
+                  this.Books[answerCount].Name = shuffledDictionary.ElementAt(i).Key;
+                  this.Books[answerCount].Location = AnswerShelves[answerCount].Location;
                   answerCount++;
-
                }
 
                Label newLabel = new Label();
@@ -310,10 +310,11 @@ namespace JonathanPolakowPROG7312POE
                newLabel.Height = newLabel.Height + 5;
                newLabel.Enabled = false;
                newLabel.Left = QuestionShelves[i].Width / 2;
-               QuestionShelves[i].Controls.Add(newLabel);
+               newLabel.UseMnemonic = false;
+               this.QuestionShelves[i].Controls.Add(newLabel);
             }
 
-            SortedBooks = shuffledDictionary.ToDictionary(pair => pair.Key, pair => pair.Value);
+            this.SortedBooks = shuffledDictionary.ToDictionary(pair => pair.Key, pair => pair.Value);
 
             foreach (var item in SortedBooks)
             {
@@ -355,7 +356,7 @@ namespace JonathanPolakowPROG7312POE
             }
 
             //update the global list
-            RemainingShelves = NewRemainingShelves;
+            this.RemainingShelves = NewRemainingShelves;
          }
          catch (Exception ex)
          {
@@ -442,10 +443,10 @@ namespace JonathanPolakowPROG7312POE
       {
          try
          {
-            pgbProgress.Value = 4;
-            tmrCountdown.Enabled = false;
+            this.pgbProgress.Value = 4;
+            this.tmrCountdown.Enabled = false;
 
-            _Awards.AddNewEntry(timeLimit, countDown);
+            this._Awards.AddNewEntry(timeLimit, countDown);
 
             this.Invoke((Action)(() => sounds.PlaySound("Success")));
 
@@ -473,7 +474,7 @@ namespace JonathanPolakowPROG7312POE
       {
          try
          {
-            tmrCountdown.Enabled = false;
+            this.tmrCountdown.Enabled = false;
 
             this.Invoke((Action)(() => sounds.PlaySound("Fail")));
 
@@ -517,8 +518,8 @@ namespace JonathanPolakowPROG7312POE
          {
             if (tmrCountdown != null)
             {
-               tmrCountdown.Stop();
-               tmrCountdown.Dispose();
+               this.tmrCountdown.Stop();
+               this.tmrCountdown.Dispose();
             }
             if (this.ParentForm is Form1 mainForm)
             {
