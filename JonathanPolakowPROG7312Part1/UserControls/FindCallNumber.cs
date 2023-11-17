@@ -132,6 +132,7 @@ namespace JonathanPolakowPROG7312POE.UserControls
             // Use the PopulateTree class to create a tree structure with Dewey decimals
             deweyTree = populate.PopulateFromCsv();
 
+            Console.WriteLine("----- get the correct data");
             //generate a random number to specify which tree branch is valid
             whichIsCorrect = random.Next(0, 4);
             //get the number that has been identified as correct
@@ -140,12 +141,16 @@ namespace JonathanPolakowPROG7312POE.UserControls
             CorrectSecondLevel = results[0];
             CorrectThirdLevel = results[1];
 
-            //get three rnadomly generated first level numbers 
+            Console.WriteLine($"Correct First: {CorrectFirstLevel.Data.Number}");
+            Console.WriteLine($"Correct Second: {CorrectSecondLevel.Number}");
+            Console.WriteLine($"Correct Third: {CorrectThirdLevel.Number}");
+
+            //get three randomly generated first level numbers 
             //using a hashset to prevent duplicate entries
             HashSet<string> uniqueTopLevelNumbers = new HashSet<string>();
             //add the correct one prevent duplicates
             uniqueTopLevelNumbers.Add(CorrectFirstLevel.Data.Number.ToString());
-            Console.WriteLine("----- get three rnadomly generated first level numbers");
+            Console.WriteLine("----- get three randomly generated first level numbers");
             for (int i = 0; i < 3; i++)
             {
                TreeNode<DeweyModel> newOne = treeWorker.GetRandomTopLevel(deweyTree);
@@ -425,6 +430,7 @@ namespace JonathanPolakowPROG7312POE.UserControls
             //get the formatted sting to display on the top level
             tops = FormatForStage();
 
+            //top shelves
             for (int i = 0; i < tops.Count; i++)
             {
                this.TopShelves[i].Controls.Clear();
@@ -433,7 +439,7 @@ namespace JonathanPolakowPROG7312POE.UserControls
                newAnswerLabel.Text = tops[i].ToString();
                newAnswerLabel.Font = new Font(Label.DefaultFont, FontStyle.Bold);
                newAnswerLabel.ForeColor = Color.Black;
-               newAnswerLabel.Top = TopShelves[i].Height / 2 - newAnswerLabel.Height;
+               newAnswerLabel.Top = TopShelves[i].Height / 2 - newAnswerLabel.Height -30;
                newAnswerLabel.Height = newAnswerLabel.Height + 5;
                newAnswerLabel.Enabled = false;
                newAnswerLabel.Left = 5;
@@ -441,17 +447,19 @@ namespace JonathanPolakowPROG7312POE.UserControls
                newAnswerLabel.UseMnemonic = false;
                newAnswerLabel.AutoSize = false;
                newAnswerLabel.TextAlign = ContentAlignment.TopLeft;
-               newAnswerLabel.Height = 80;
+               newAnswerLabel.Height = 100;
                this.TopShelves[i].Controls.Add(newAnswerLabel);
             }
 
+            //bottom lable
+            Book1.Location = BottomShelf1.Location;
             Label newLabel = new Label();
             newLabel.Name = "BookNumber1";
             //newLabel.Text = CorrectThirdLevel.Number.ToString() + "\n" + CorrectThirdLevel.Description;
             newLabel.Text = bottomText;
             newLabel.Font = new Font(Label.DefaultFont, FontStyle.Bold);
             newLabel.ForeColor = Color.Black;
-            newLabel.Top = Book1.Height / 2 - newLabel.Height;
+            newLabel.Top = Book1.Height / 2 - newLabel.Height - 30;
             newLabel.Height = newLabel.Height + 5;
             newLabel.Enabled = false;
             newLabel.Left = 5;
@@ -459,7 +467,7 @@ namespace JonathanPolakowPROG7312POE.UserControls
             newLabel.UseMnemonic = false;
             newLabel.AutoSize = false;
             newLabel.TextAlign = ContentAlignment.TopLeft;
-            newLabel.Height = 40;
+            newLabel.Height = 100;
             Book1.Controls.Add(newLabel);
 
          }
@@ -554,7 +562,6 @@ namespace JonathanPolakowPROG7312POE.UserControls
                   }
 
                   PopulateBooks();
-                  Book1.Location = BottomShelf1.Location;
                   pgbProgress.Value = stage;
                   return true;
                }
@@ -711,9 +718,3 @@ namespace JonathanPolakowPROG7312POE.UserControls
    }
 }
 //-----------------------------------------END OF FILE---------------------------------------------
-
-
-// to do 
-//feedback
-//try catches
-//Error handling with reading from csv

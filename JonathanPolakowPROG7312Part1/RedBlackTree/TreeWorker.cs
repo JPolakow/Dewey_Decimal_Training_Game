@@ -20,7 +20,11 @@ namespace JonathanPolakowPROG7312POE.RedBlackTree
       private Random random = new Random();
 
       //-------------------------------------------------------------------------------------------
-      //
+      /// <summary>
+      /// method to return a random top level, the calling method uses a hashset to prevent duplicates
+      /// </summary>
+      /// <param name="deweyTree"></param>
+      /// <returns></returns>
       public TreeNode<DeweyModel> GetRandomTopLevel(TreeNode<DeweyModel> deweyTree)
       {
          int randomindextogettoplevelsfrom = random.Next(1, deweyTree.Children.Count);
@@ -28,7 +32,13 @@ namespace JonathanPolakowPROG7312POE.RedBlackTree
       }
 
       //-------------------------------------------------------------------------------------------
-      //
+      /// <summary>
+      /// method to return two values, a second level and a third level
+      /// takes in the selscted top level node and selects the values from it
+      /// </summary>
+      /// <param name="CorrectFirstLevel"></param>
+      /// <param name="whichIsCorrect"></param>
+      /// <returns></returns>
       public List<DeweyModel> SelectCorrectSecondAndThirdLevel(TreeNode<DeweyModel> CorrectFirstLevel, int whichIsCorrect)
       {
          List<DeweyModel> results = new List<DeweyModel>();
@@ -36,8 +46,6 @@ namespace JonathanPolakowPROG7312POE.RedBlackTree
          DeweyModel correctSecond;
 
          //select correct third level
-         Console.WriteLine("----- select correct second and third level");
-
          TreeNode<DeweyModel> whichTopLevelNodeIsCorrect = CorrectFirstLevel;
          int randomSecondIndex = random.Next(0, whichTopLevelNodeIsCorrect.Children.Count);
          TreeNode<DeweyModel> randomSecond = whichTopLevelNodeIsCorrect.Children.ElementAt(randomSecondIndex);
@@ -47,16 +55,13 @@ namespace JonathanPolakowPROG7312POE.RedBlackTree
          TreeNode<DeweyModel> randomThird = randomSecond.Children.ElementAt(randomThirdIndex);
          correctThird = randomThird.Data;
 
-         Console.WriteLine($"Random Second: {correctSecond}");
-         Console.WriteLine($"Random Third: {correctThird}");
-
          results.Add(correctSecond);
          results.Add(correctThird);
          return results;
       }
 
       //-------------------------------------------------------------------------------------------
-      //
+      //method to get a random second level using the correct answer to generate values that are of the same first level
       public TreeNode<DeweyModel> GetRandomSecond(TreeNode<DeweyModel> deweyTree, string correctAnswer)
       {
          string correctfirstlevelnumber = correctAnswer.Substring(0, 1);
@@ -72,11 +77,10 @@ namespace JonathanPolakowPROG7312POE.RedBlackTree
       }
 
       //-------------------------------------------------------------------------------------------
-      //
+      //method to get a random third level using the correct answer to generate values that are of the same first and second level
       public TreeNode<DeweyModel> GetRandomThirdLevel(string correctAnswer, TreeNode<DeweyModel> topLevelNode)
       {
          string correctsecondlevelnumber = correctAnswer.Substring(1, 1);
-         Console.WriteLine(correctsecondlevelnumber);
          int correctsecondlevelnumberint = int.Parse(correctsecondlevelnumber);
 
          TreeNode<DeweyModel> randomthirdbasedoncorrect = (getRandomParent(topLevelNode, correctsecondlevelnumberint + 1));
@@ -89,7 +93,14 @@ namespace JonathanPolakowPROG7312POE.RedBlackTree
       }
 
       //-------------------------------------------------------------------------------------------
-      //
+      /// <summary>
+      /// this takes in a node and a number and gets a node
+      /// this is the only part of the class i used ChatGPT for
+      /// </summary>
+      /// <typeparam name="T"></typeparam>
+      /// <param name="parent"></param>
+      /// <param name="n"></param>
+      /// <returns></returns>
       TreeNode<T> getRandomParent<T>(TreeNode<T> parent, int n)
       {
          if (n < 1 || n > parent.Children.Count)
