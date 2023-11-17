@@ -1,7 +1,8 @@
 ﻿//Jonathan Polakow
 //ST10081881
-//PROG7312 POE Part 2
+//PROG7312 POE
 
+using JonathanPolakowPROG7312POE.UserControls;
 using System;
 using System.Windows.Forms;
 
@@ -24,6 +25,7 @@ namespace JonathanPolakowPROG7312POE
          pnlChooseDifficulty.Visible = false;
          pnlMenu.Visible = true;
          pnlPlaceBooks.Visible = false;
+         pnlFindCallNumbers.Visible = false;
          PlayMusic();
 
          selectDifficulty1 = new SelectDifficulty(this);
@@ -40,7 +42,7 @@ namespace JonathanPolakowPROG7312POE
       /// </summary>
       private async void PlayMusic()
       {
-         playMusic.PlayMusicMethod();
+      //   playMusic.PlayMusicMethod();
       }
 
       //-------------------------------------------------------------------------------------------
@@ -58,32 +60,8 @@ namespace JonathanPolakowPROG7312POE
             pnlChooseDifficulty.Visible = false;
             pnlIdentifyAreas.Visible = false;
             pnlPlaceBooks.Visible = false;
+            pnlFindCallNumbers.Visible = false;
             pnlMenu.Visible = true;
-         }
-         catch (Exception ex)
-         {
-            Console.WriteLine(ex.Message);
-            MessageBox.Show("Oops, something went wrong, please try again");
-         }
-      }
-
-      //-------------------------------------------------------------------------------------------
-      /// <summary>
-      /// Method thats called when the UserControl is closed
-      /// </summary>
-      public void RestartUserControl(UserControl name)
-      {
-         try
-         {
-            //bookShelf1 is located in the designer code
-            pnlIdentifyAreas.Controls.Clear();
-            identifyAreas1 = new IdentifyAreas(0);
-            identifyAreas1.Left = (this.ClientSize.Width - identifyAreas1.Width) / 2;
-            identifyAreas1.Top = (this.ClientSize.Height - identifyAreas1.Height) / 2;
-            pnlIdentifyAreas.Controls.Add(identifyAreas1);
-
-            pnlMenu.Visible = false;
-            pnlIdentifyAreas.Visible = true;
          }
          catch (Exception ex)
          {
@@ -105,6 +83,7 @@ namespace JonathanPolakowPROG7312POE
          {
             pnlIdentifyAreas.Controls.Clear();
             pnlPlaceBooks.Controls.Clear();
+            pnlFindCallNumbers.Controls.Clear();
 
             switch (this.selectedGame)
             {
@@ -128,6 +107,16 @@ namespace JonathanPolakowPROG7312POE
                   pnlChooseDifficulty.Visible = false;
                   pnlIdentifyAreas.Visible = true;
                   break;
+               case 3:
+                  //findCallNumber1 is located in the designer code
+                  findCallNumber1 = new FindCallNumber(this.TimeLimit);
+                  findCallNumber1.Left = (this.ClientSize.Width - findCallNumber1.Width) / 2;
+                  findCallNumber1.Top = (this.ClientSize.Height - findCallNumber1.Height) / 2;
+                  pnlFindCallNumbers.Controls.Add(findCallNumber1);
+                  pnlMenu.Visible = false;
+                  pnlChooseDifficulty.Visible = false;
+                  pnlFindCallNumbers.Visible = true;
+                  break;
             }
          }
          catch (Exception ex)
@@ -143,7 +132,6 @@ namespace JonathanPolakowPROG7312POE
       /// </summary>
       private void ShowDiff()
       {
-         
          selectDifficulty1.Left = 0;
          selectDifficulty1.Top = 0;
          pnlChooseDifficulty.Controls.Add(selectDifficulty1);
@@ -194,15 +182,19 @@ namespace JonathanPolakowPROG7312POE
          pnlMenu.Visible = false;
          pnlAwards.Visible = true;
       }
+
+      //-------------------------------------------------------------------------------------------
+      /// <summary>
+      /// btnFindCallNums_Click, calls select diff
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+      private void btnFindCallNums_Click(object sender, EventArgs e)
+      {
+         this.selectedGame = 3;
+         pnlMenu.Visible = false;
+         ShowDiff();
+      }
    }
 }
 //-----------------------------------------END OF FILE---------------------------------------------
-
-/*CHANGED 
- * moved play sounds to another class
- * fixed reset
- * moved code out of form 1 into select difficulty user control
- * placed funualnaity into worker class
- * added this.
- * using a sorted dic
- */

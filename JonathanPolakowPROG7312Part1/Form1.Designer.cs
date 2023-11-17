@@ -1,4 +1,6 @@
-﻿namespace JonathanPolakowPROG7312POE
+﻿using JonathanPolakowPROG7312POE.UserControls;
+
+namespace JonathanPolakowPROG7312POE
 {
    partial class Form1
    {
@@ -32,12 +34,13 @@
          this.pnlMenu = new System.Windows.Forms.Panel();
          this.label1 = new System.Windows.Forms.Label();
          this.btnAwards = new System.Windows.Forms.Button();
-         this.btn3 = new System.Windows.Forms.Button();
+         this.btnFindCallNums = new System.Windows.Forms.Button();
          this.btnIdentifyAreas = new System.Windows.Forms.Button();
          this.btnPlaceBooks = new System.Windows.Forms.Button();
          this.pnlAwards = new System.Windows.Forms.Panel();
          this.pnlPlaceBooks = new System.Windows.Forms.Panel();
          this.pnlChooseDifficulty = new System.Windows.Forms.Panel();
+         this.pnlFindCallNumbers = new System.Windows.Forms.Panel();
          this.pnlMenu.SuspendLayout();
          this.SuspendLayout();
          // 
@@ -60,7 +63,7 @@
          this.pnlMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
          this.pnlMenu.Controls.Add(this.label1);
          this.pnlMenu.Controls.Add(this.btnAwards);
-         this.pnlMenu.Controls.Add(this.btn3);
+         this.pnlMenu.Controls.Add(this.btnFindCallNums);
          this.pnlMenu.Controls.Add(this.btnIdentifyAreas);
          this.pnlMenu.Controls.Add(this.btnPlaceBooks);
          this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -84,30 +87,31 @@
          // btnAwards
          // 
          this.btnAwards.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btnAwards.Location = new System.Drawing.Point(352, 316);
+         this.btnAwards.Location = new System.Drawing.Point(344, 314);
          this.btnAwards.Name = "btnAwards";
-         this.btnAwards.Size = new System.Drawing.Size(130, 28);
+         this.btnAwards.Size = new System.Drawing.Size(143, 28);
          this.btnAwards.TabIndex = 3;
          this.btnAwards.Text = "View Awards";
          this.btnAwards.UseVisualStyleBackColor = true;
          this.btnAwards.Click += new System.EventHandler(this.BtnAwards_Click);
          // 
-         // btn3
+         // btnFindCallNums
          // 
-         this.btn3.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btn3.Location = new System.Drawing.Point(352, 282);
-         this.btn3.Name = "btn3";
-         this.btn3.Size = new System.Drawing.Size(130, 28);
-         this.btn3.TabIndex = 2;
-         this.btn3.Text = "Find Call Numbers";
-         this.btn3.UseVisualStyleBackColor = true;
+         this.btnFindCallNums.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.btnFindCallNums.Location = new System.Drawing.Point(344, 280);
+         this.btnFindCallNums.Name = "btnFindCallNums";
+         this.btnFindCallNums.Size = new System.Drawing.Size(143, 28);
+         this.btnFindCallNums.TabIndex = 2;
+         this.btnFindCallNums.Text = "Find Call Numbers";
+         this.btnFindCallNums.UseVisualStyleBackColor = true;
+         this.btnFindCallNums.Click += new System.EventHandler(this.btnFindCallNums_Click);
          // 
          // btnIdentifyAreas
          // 
          this.btnIdentifyAreas.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btnIdentifyAreas.Location = new System.Drawing.Point(352, 248);
+         this.btnIdentifyAreas.Location = new System.Drawing.Point(344, 246);
          this.btnIdentifyAreas.Name = "btnIdentifyAreas";
-         this.btnIdentifyAreas.Size = new System.Drawing.Size(130, 28);
+         this.btnIdentifyAreas.Size = new System.Drawing.Size(143, 28);
          this.btnIdentifyAreas.TabIndex = 1;
          this.btnIdentifyAreas.Text = "Identify Areas";
          this.btnIdentifyAreas.UseVisualStyleBackColor = true;
@@ -116,9 +120,9 @@
          // btnPlaceBooks
          // 
          this.btnPlaceBooks.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btnPlaceBooks.Location = new System.Drawing.Point(352, 214);
+         this.btnPlaceBooks.Location = new System.Drawing.Point(344, 212);
          this.btnPlaceBooks.Name = "btnPlaceBooks";
-         this.btnPlaceBooks.Size = new System.Drawing.Size(130, 28);
+         this.btnPlaceBooks.Size = new System.Drawing.Size(143, 28);
          this.btnPlaceBooks.TabIndex = 0;
          this.btnPlaceBooks.Text = "Replace books";
          this.btnPlaceBooks.UseVisualStyleBackColor = true;
@@ -158,11 +162,20 @@
          this.pnlChooseDifficulty.Size = new System.Drawing.Size(805, 554);
          this.pnlChooseDifficulty.TabIndex = 4;
          // 
+         // pnlFindCallNumbers
+         // 
+         this.pnlFindCallNumbers.BackgroundImage = global::JonathanPolakowPROG7312POE.Properties.Resources.BookShelfBackground;
+         this.pnlFindCallNumbers.Location = new System.Drawing.Point(0, 0);
+         this.pnlFindCallNumbers.Name = "pnlFindCallNumbers";
+         this.pnlFindCallNumbers.Size = new System.Drawing.Size(805, 554);
+         this.pnlFindCallNumbers.TabIndex = 6;
+         // 
          // Form1
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(805, 554);
+         this.Controls.Add(this.pnlFindCallNumbers);
          this.Controls.Add(this.pnlMenu);
          this.Controls.Add(this.pnlChooseDifficulty);
          this.Controls.Add(this.pnlIdentifyAreas);
@@ -185,17 +198,19 @@
       private System.Windows.Forms.Panel pnlPlaceBooks;
       private System.Windows.Forms.Panel pnlMenu;
       private System.Windows.Forms.Button btnAwards;
-      private System.Windows.Forms.Button btn3;
+      private System.Windows.Forms.Button btnFindCallNums;
       private System.Windows.Forms.Button btnIdentifyAreas;
       private System.Windows.Forms.Button btnPlaceBooks;
       private System.Windows.Forms.Panel pnlAwards;
       private BookShelf bookShelf1;
       private IdentifyAreas identifyAreas1;
+      private FindCallNumber findCallNumber1;
       private SelectDifficulty selectDifficulty1;
       private Awards awards1;
       private System.Windows.Forms.Label label1;
       private System.Windows.Forms.Panel pnlIdentifyAreas;
       private System.Windows.Forms.Panel pnlChooseDifficulty;
+      private System.Windows.Forms.Panel pnlFindCallNumbers;
    }
 }
 

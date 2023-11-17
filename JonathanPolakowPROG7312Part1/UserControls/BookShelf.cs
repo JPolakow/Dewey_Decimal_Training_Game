@@ -1,6 +1,6 @@
 ﻿//Jonathan Polakow
 //ST10081881
-//PROG7312 POE Part 2
+//PROG7312 POE
 
 using System;
 using System.Collections.Generic;
@@ -11,9 +11,8 @@ using System.Windows.Forms;
 
 namespace JonathanPolakowPROG7312POE
 {
-   public partial class IdentifyAreas : UserControl
+   public partial class BookShelf : UserControl
    {
-      #region vars
       /// <summary>
       /// awards model singleton
       /// </summary>
@@ -25,11 +24,11 @@ namespace JonathanPolakowPROG7312POE
       /// <summary>
       /// list of all the top panels
       /// </summary>
-      private List<Panel> AnswerShelves = new List<Panel>();
+      private List<Panel> TopShelves = new List<Panel>();
       /// <summary>
       /// list of all the bottom panels
       /// </summary>
-      private List<Panel> QuestionShelves = new List<Panel>();
+      private List<Panel> BottomShelves = new List<Panel>();
       /// <summary>
       /// list of all the panels that are not occupied by a book
       /// </summary>
@@ -57,58 +56,22 @@ namespace JonathanPolakowPROG7312POE
       /// <summary>
       /// instance of the worker class made for this game
       /// </summary>
-      IdentifyAreasWorker worker = new IdentifyAreasWorker();
-      /// <summary>
-      /// instance of the worker class made for this game
-      /// </summary>
       PlaySounds sounds = new PlaySounds();
-      #endregion 
-
-      public IdentifyAreas(int Timelimit)
-      {
-         this.timeLimit = Timelimit;
-         this.countDown = timeLimit;
-         InitializeComponent();
-         StartGame();
-      }
 
       //-------------------------------------------------------------------------------------------
       /// <summary>
-      /// initialiser method to set up the timer
+      /// constructor
       /// </summary>
-      private void StartGame()
+      /// <param name="Timelimit"></param>
+      public BookShelf(int Timelimit)
       {
-         try
-         {
-
-
-            FilterPanelsIntoLists();
-            PopulateBooks();
-
-            this.tmrCountdown = new System.Windows.Forms.Timer();
-            this.tmrCountdown.Tick += new EventHandler(tmrCountdown_Tick);
-            this.tmrCountdown.Interval = 1000; // 1 second
-
-            if (timeLimit > 0)
-            {
-               this.tmrCountdown.Start();
-               lblCountdown.Text = timeLimit.ToString();
-               lblCountdown.Visible = true;
-            }
-
-            foreach (Panel book in Books)
-            {
-               book.Enabled = true;
-            }
-         }
-         catch (Exception ex)
-         {
-            Console.WriteLine(ex.Message);
-            MessageBox.Show("Oops, something went wrong, please try again");
-            BackToMenu();
-         }
+         timeLimit = Timelimit;
+         countDown = timeLimit;
+         InitializeComponent();
+         FilterPanelsIntoLists();
+         PopulateBooks();
+         StartGame();
       }
-
 
       //-------------------------------------------------------------------------------------------
       /// <summary>
@@ -125,32 +88,58 @@ namespace JonathanPolakowPROG7312POE
             {
                if (panel.Name.Contains("Book"))
                {
-                  this.Books.Add(panel);
+                  Books.Add(panel);
                   ControlExtension.Draggable(panel, true);
                   panel.MouseDown += Panel_MouseDown;
                   panel.MouseUp += Panel_MouseUp;
-                  panel.BackColor = worker.RandomBrightColor();
+                  panel.BackColor = RandomBrightColor();
                }
 
-               if (panel.Name.Contains("Answer"))
+               if (panel.Name.Contains("Top"))
                {
-                  this.AnswerShelves.Add(panel);
-                  this.RemainingShelves.Add(panel);
-                  panel.BackColor = worker.RandomBrightColor();
+                  TopShelves.Add(panel);
+                  RemainingShelves.Add(panel);
                   panel.Visible = false;
                }
 
-               if (panel.Name.Contains("Question"))
+               if (panel.Name.Contains("Bottom"))
                {
-                  this.QuestionShelves.Add(panel);
-                  this.RemainingShelves.Add(panel);
-                  panel.BackColor = Color.FromArgb(160, 82, 45);
+                  BottomShelves.Add(panel);
+                  RemainingShelves.Add(panel);
+                  panel.Visible = false;
                }
             }
 
-            this.Books = Books.OrderBy(panel => panel.Name).ToList();
-            this.AnswerShelves = AnswerShelves.OrderBy(panel => panel.Name).ToList();
-            this.QuestionShelves = QuestionShelves.OrderBy(panel => panel.Name).ToList();
+            Books = Books.OrderBy(panel => panel.Name).ToList();
+            TopShelves = TopShelves.OrderBy(panel => panel.Name).ToList();
+            BottomShelves = BottomShelves.OrderBy(panel => panel.Name).ToList();
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+            MessageBox.Show("Oops, something went wrong, please try again");
+            BackToMenu();
+         }
+      }
+
+      //-------------------------------------------------------------------------------------------
+      /// <summary>
+      /// initialiser method to set up the timer
+      /// </summary>
+      private void StartGame()
+      {
+         try
+         {
+            tmrCountdown = new System.Windows.Forms.Timer();
+            tmrCountdown.Tick += new EventHandler(tmrCountdown_Tick);
+            tmrCountdown.Interval = 1000; // 1 second
+
+            if (timeLimit > 0)
+            {
+               tmrCountdown.Start();
+               lblCountdown.Text = timeLimit.ToString();
+               lblCountdown.Visible = true;
+            }
          }
          catch (Exception ex)
          {
@@ -170,14 +159,17 @@ namespace JonathanPolakowPROG7312POE
       {
          try
          {
-            this.countDown--;
+            countDown--;
 
-            if (this.countDown == 0)
+            if (countDown == 0)
             {
-               this.tmrCountdown.Enabled = false;
-               this.tmrCountdown.Stop();
+               tmrCountdown.Enabled = false;
+               tmrCountdown.Stop();
 
-               if (!CheckOrder())
+               if (CheckOrder())
+               {
+               }
+               else
                {
                   Fail();
                }
@@ -205,14 +197,14 @@ namespace JonathanPolakowPROG7312POE
 
             //add the black where the book just was back to the list of where panels can go
             //this allows it to be placed back
-            List<Panel> AllShelves = new List<Panel>(AnswerShelves);
-            AllShelves.AddRange(QuestionShelves);
+            List<Panel> AllShelves = new List<Panel>(TopShelves);
+            AllShelves.AddRange(BottomShelves);
             Control book = sender as Control;
             foreach (Panel panel in AllShelves)
             {
                if (book.Location == panel.Location & !(RemainingShelves.Contains(panel)))
                {
-                  this.RemainingShelves.Add(panel);
+                  RemainingShelves.Add(panel);
                }
             }
          }
@@ -254,11 +246,7 @@ namespace JonathanPolakowPROG7312POE
             Panel ClosestPanel = PanelDistances.First(pair => pair.Value == PanelDistances.Values.Min()).Key;
             book.Location = ClosestPanel.Location;
 
-            this.Invoke((Action)(() =>
-            {
-               sounds.PlaySound("BookPlace");
-            }));
-
+            sounds.PlaySound("BookPlace");
             FilterRemaining();
             CheckOrder();
          }
@@ -277,54 +265,38 @@ namespace JonathanPolakowPROG7312POE
       {
          try
          {
-            Dictionary<string, string> shuffledDictionary = new Dictionary<string, string>();
-            shuffledDictionary = worker.GenerateOrder();
-            int answerCount = 0;
+            //list of the randomly generated Dewey Decimal numbers
+            List<string> DeweyDecimalList = new List<string>();
 
-            for (int i = 0; i < shuffledDictionary.Count; i++)
+            DeweyDecimalLibrary.Class1 generateDeweyDecimal = new DeweyDecimalLibrary.Class1();
+
+            for (int i = 0; i < Books.Count; i++)
             {
-               if (!shuffledDictionary.ElementAt(i).Key.Contains("leave"))
-               {
-                  Label newAnswerLabel = new Label();
-                  newAnswerLabel.Name = "BookNumber" + i;
-                  newAnswerLabel.Text = shuffledDictionary.ElementAt(i).Key;
-                  newAnswerLabel.Font = new Font(Label.DefaultFont, FontStyle.Bold);
-                  newAnswerLabel.ForeColor = Color.Black;
-                  newAnswerLabel.Top = Books[answerCount].Height / 2 - newAnswerLabel.Height;
-                  newAnswerLabel.Height = newAnswerLabel.Height + 5;
-                  newAnswerLabel.Left = 3;
-                  newAnswerLabel.Enabled = false;
-                  newAnswerLabel.UseMnemonic = false;
-                  this.Books[answerCount].Controls.Add(newAnswerLabel);
-                  this.Books[answerCount].Name = shuffledDictionary.ElementAt(i).Key;
-                  this.Books[answerCount].Location = AnswerShelves[answerCount].Location;
-                  answerCount++;
-               }
+               DeweyDecimalList.Add(generateDeweyDecimal.GenerateDeweyDecimal());
+            }
 
+            //put numebrs on book
+            for (int i = 0; i < Books.Count; i++)
+            {
                Label newLabel = new Label();
-               newLabel.Name = "QuestionNumber" + i;
-               newLabel.Text = shuffledDictionary.ElementAt(i).Value;
+               newLabel.Name = "BookNumber" + i;
+               newLabel.Text = DeweyDecimalList[i];
                newLabel.Font = new Font(Label.DefaultFont, FontStyle.Bold);
                newLabel.ForeColor = Color.Black;
-               newLabel.Top = QuestionShelves[i].Height / 2 - newLabel.Height;
+               newLabel.Top = Books[i].Height / 2 - newLabel.Height;
                newLabel.Height = newLabel.Height + 5;
                newLabel.Enabled = false;
-               newLabel.Left = QuestionShelves[i].Width / 2;
-               newLabel.UseMnemonic = false;
-               this.QuestionShelves[i].Controls.Add(newLabel);
+               Books[i].Controls.Add(newLabel);
+
+               SortedBooks.Add(Books[i].Name, DeweyDecimalList[i]);
             }
 
-            this.SortedBooks = shuffledDictionary.ToDictionary(pair => pair.Key, pair => pair.Value);
-
-            foreach (var item in SortedBooks)
-            {
-               Console.WriteLine(item.Key);
-               Console.WriteLine(item.Value);
-            }
+            //sort the list using a modified bubble sort
+            SortedBooks = BubbleSort(SortedBooks);
          }
          catch (Exception ex)
          {
-            Console.WriteLine(ex.ToString());
+            Console.WriteLine(ex.Message);
             MessageBox.Show("Oops, something went wrong, please try again");
             BackToMenu();
          }
@@ -339,8 +311,8 @@ namespace JonathanPolakowPROG7312POE
       {
          try
          {
-            List<Panel> NewRemainingShelves = new List<Panel>(AnswerShelves);
-            NewRemainingShelves.AddRange(QuestionShelves);
+            List<Panel> NewRemainingShelves = new List<Panel>(TopShelves);
+            NewRemainingShelves.AddRange(BottomShelves);
             List<Panel> IterationList = new List<Panel>(NewRemainingShelves);
 
             foreach (Panel RPanel in IterationList)
@@ -356,13 +328,14 @@ namespace JonathanPolakowPROG7312POE
             }
 
             //update the global list
-            this.RemainingShelves = NewRemainingShelves;
+            RemainingShelves = NewRemainingShelves;
          }
          catch (Exception ex)
          {
             Console.WriteLine(ex.Message);
             MessageBox.Show("Oops, something went wrong, please try again");
          }
+
       }
 
       //-------------------------------------------------------------------------------------------
@@ -374,65 +347,63 @@ namespace JonathanPolakowPROG7312POE
       {
          try
          {
-            int placedAnswers = this.QuestionShelves.Count(panel1 => this.Books.Any(panel2 => worker.AreLocationsEqual(panel1, panel2)));
+            List<string> BookOrder = new List<string>();
+            bool Valid = true;
+            int validCount = 0;
 
-            if (placedAnswers == 4)
+            //check if each top shelve has a book
+            foreach (Panel RPanel in TopShelves)
             {
-               List<string> BookOrder = new List<string>();
-               bool Valid = true;
-               int validCount = 0;
+               bool placed = false;
 
-               //get the location of all placed books
-               foreach (Panel panel in this.QuestionShelves)
+               foreach (Panel book in Books)
                {
-                  bool populated = false;
-                  foreach (Panel book in this.Books)
+                  if (book.Location == RPanel.Location)
                   {
-                     if (book.Location == panel.Location)
-                     {
-                        BookOrder.Add(book.Name);
-                        populated = true;
-                     }
-                  }
-                  if (populated != true)
-                  {
-                     BookOrder.Add("null");
+                     BookOrder.Add(book.Name);
+                     placed = true;
                   }
                }
 
-
-               //check the users order of the books
-               for (int i = 0; i < BookOrder.Count; i++)
+               //if the panel is empty the user has not finished placing the books
+               if (placed == false)
                {
-                  // Compare the dictionary key at the current position with the list element at the same position.
-                  if (SortedBooks.ElementAt(i).Key != BookOrder[i])
-                  {
-                     Valid = false;
-                  }
-                  else
-                  {
-                     validCount++;
-                  }
+                  Valid = false;
+                  BookOrder.Add(null);
                }
+            }
 
-               if (validCount == 4)
+            //check the users order of the books
+            for (int i = 0; i < BookOrder.Count; i++)
+            {
+               // Compare the dictionary key at the current position with the list element at the same position.
+               if (SortedBooks.ElementAt(i).Key != BookOrder[i])
                {
-                  pgbProgress.Value = validCount;
-                  Success();
-                  return true;
+                  Valid = false;
                }
+               else
+               {
+                  validCount++;
+               }
+            }
 
-               pgbProgress.Value = validCount;
+            pgbProgress.Value = validCount;
+
+            if (Valid)
+            {
+               Success();
+               return true;
             }
 
             return false;
          }
          catch (Exception ex)
          {
-            Console.WriteLine(ex.ToString());
+            Console.WriteLine(ex.Message);
             MessageBox.Show("Oops, something went wrong, please try again");
             return false;
          }
+
       }
 
       //-------------------------------------------------------------------------------------------
@@ -443,13 +414,12 @@ namespace JonathanPolakowPROG7312POE
       {
          try
          {
-            this.pgbProgress.Value = 4;
-            this.tmrCountdown.Enabled = false;
+            pgbProgress.Value = 10;
+            tmrCountdown.Enabled = false;
 
-            this._Awards.AddNewEntry(timeLimit, countDown);
+            _Awards.AddNewEntry(timeLimit, countDown);
 
-            this.Invoke((Action)(() => sounds.PlaySound("Success")));
-
+            sounds.PlaySound("Success");
             MessageBox.Show("You Pass");
 
             foreach (Panel book in Books)
@@ -474,10 +444,8 @@ namespace JonathanPolakowPROG7312POE
       {
          try
          {
-            this.tmrCountdown.Enabled = false;
-
-            this.Invoke((Action)(() => sounds.PlaySound("Fail")));
-
+            tmrCountdown.Enabled = false;
+            sounds.PlaySound("Fail");
             MessageBox.Show("You Failed");
 
             foreach (Panel book in Books)
@@ -496,6 +464,17 @@ namespace JonathanPolakowPROG7312POE
 
       //-------------------------------------------------------------------------------------------
       /// <summary>
+      /// method to generate a random color with a bias towards a brighter color
+      /// </summary>
+      /// <returns></returns>
+      private Color RandomBrightColor()
+      {
+         Color randomColor = Color.FromArgb(rnd.Next(100, 200), rnd.Next(100, 200), rnd.Next(100, 200));
+         return randomColor;
+      }
+
+      //-------------------------------------------------------------------------------------------
+      /// <summary>
       /// reset button, 
       /// </summary>
       /// <param name="sender"></param>
@@ -510,17 +489,26 @@ namespace JonathanPolakowPROG7312POE
 
       //-------------------------------------------------------------------------------------------
       /// <summary>
+      /// btn to send the user back to the main menu
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+      private void BtnExit_Click(object sender, EventArgs e)
+      {
+         BackToMenu();
+      }
+
+      //-------------------------------------------------------------------------------------------
+      /// <summary>
       /// calls the main form and disposes itself
       /// </summary>
       private void BackToMenu()
       {
          try
          {
-            if (tmrCountdown != null)
-            {
-               this.tmrCountdown.Stop();
-               this.tmrCountdown.Dispose();
-            }
+            tmrCountdown.Stop();
+            tmrCountdown.Dispose();
+
             if (this.ParentForm is Form1 mainForm)
             {
                mainForm.CloseUserControl();
@@ -537,13 +525,47 @@ namespace JonathanPolakowPROG7312POE
 
       //-------------------------------------------------------------------------------------------
       /// <summary>
-      /// back button
+      /// Bubble sort to loop through a dictionary and sort
+      /// this bubble has been tested and with all identical numbers it is able to sort the letters aswell
       /// </summary>
-      /// <param name="sender"></param>
-      /// <param name="e"></param>
-      private void btnExit_Click(object sender, EventArgs e)
+      /// <param name="dictionary"></param>
+      /// <returns></returns>
+      private static Dictionary<string, string> BubbleSort(Dictionary<string, string> dictionary)
       {
-         BackToMenu();
+         try
+         {
+            //source: ChatGPT, and alot of manual fixing
+
+            var sortedPairs = dictionary.ToList();
+
+            for (int i = 0; i < sortedPairs.Count - 1; i++)
+            {
+               for (int j = 0; j < sortedPairs.Count - i - 1; j++)
+               {
+                  if (string.Compare(sortedPairs[j].Value, sortedPairs[j + 1].Value, StringComparison.Ordinal) > 0)
+                  {
+                     var temp = sortedPairs[j];
+                     sortedPairs[j] = sortedPairs[j + 1];
+                     sortedPairs[j + 1] = temp;
+                  }
+               }
+            }
+
+            var sortedDictionary = new Dictionary<string, string>();
+
+            foreach (var pair in sortedPairs)
+            {
+               sortedDictionary.Add(pair.Key, pair.Value);
+            }
+
+            return sortedDictionary;
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+            MessageBox.Show("Oops, something went wrong, please try again");
+            return dictionary;
+         }
       }
    }
 }

@@ -43,8 +43,39 @@
       <HintPath>..\packages\WMPLib.1.0.0\lib\Interop.WMPLib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.Win32.Registry, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Registry.4.7.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.2.2.1\lib\net472\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Asio, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.Asio.2.2.1\lib\netstandard2.0\NAudio.Asio.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.Core.2.2.1\lib\netstandard2.0\NAudio.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Midi, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.Midi.2.2.1\lib\netstandard2.0\NAudio.Midi.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Wasapi, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.Wasapi.2.2.1\lib\netstandard2.0\NAudio.Wasapi.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.WinForms, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.WinForms.2.2.1\lib\net472\NAudio.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.WinMM, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.WinMM.2.2.1\lib\netstandard2.0\NAudio.WinMM.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.7.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.7.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,17 +87,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Awards.cs">
+    <Compile Include="RedBlackTree\TreeWorker.cs" />
+    <Compile Include="UserControls\Awards.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Awards.Designer.cs">
+    <Compile Include="UserControls\Awards.Designer.cs">
       <DependentUpon>Awards.cs</DependentUpon>
     </Compile>
-    <Compile Include="AwardsModelSingleton.cs" />
-    <Compile Include="BookShelf.cs">
+    <Compile Include="Classes\AwardsModelSingleton.cs" />
+    <Compile Include="UserControls\BookShelf.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="BookShelf.Designer.cs">
+    <Compile Include="UserControls\BookShelf.Designer.cs">
       <DependentUpon>BookShelf.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
@@ -75,34 +107,46 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="IdentifyAreas.cs">
+    <Compile Include="UserControls\FindCallNumber.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="IdentifyAreas.Designer.cs">
+    <Compile Include="UserControls\FindCallNumber.Designer.cs">
+      <DependentUpon>FindCallNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\IdentifyAreas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\IdentifyAreas.Designer.cs">
       <DependentUpon>IdentifyAreas.cs</DependentUpon>
     </Compile>
-    <Compile Include="IdentifyAreasWorker.cs" />
-    <Compile Include="ListShuffle.cs" />
-    <Compile Include="PlayMusic.cs" />
-    <Compile Include="PlaySounds.cs" />
+    <Compile Include="Classes\IdentifyAreasWorker.cs" />
+    <Compile Include="Classes\ListShuffle.cs" />
+    <Compile Include="Classes\PlayMusic.cs" />
+    <Compile Include="Classes\PlaySounds.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SelectDifficulty.cs">
+    <Compile Include="RedBlackTree\DeweyModel.cs" />
+    <Compile Include="RedBlackTree\PopulateTree.cs" />
+    <Compile Include="RedBlackTree\TreeNode.cs" />
+    <Compile Include="UserControls\SelectDifficulty.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SelectDifficulty.Designer.cs">
+    <Compile Include="UserControls\SelectDifficulty.Designer.cs">
       <DependentUpon>SelectDifficulty.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Awards.resx">
+    <EmbeddedResource Include="UserControls\Awards.resx">
       <DependentUpon>Awards.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BookShelf.resx">
+    <EmbeddedResource Include="UserControls\BookShelf.resx">
       <DependentUpon>BookShelf.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IdentifyAreas.resx">
+    <EmbeddedResource Include="UserControls\FindCallNumber.resx">
+      <DependentUpon>FindCallNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\IdentifyAreas.resx">
       <DependentUpon>IdentifyAreas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -115,7 +159,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SelectDifficulty.resx">
+    <EmbeddedResource Include="UserControls\SelectDifficulty.resx">
       <DependentUpon>SelectDifficulty.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

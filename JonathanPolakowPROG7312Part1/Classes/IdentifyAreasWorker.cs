@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Jonathan Polakow
+//ST10081881
+//PROG7312 POE
+
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;

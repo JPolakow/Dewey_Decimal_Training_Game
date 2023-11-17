@@ -1,6 +1,6 @@
 ﻿//Jonathan Polakow
 //ST10081881
-//PROG7312 POE Part 2
+//PROG7312 POE
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
