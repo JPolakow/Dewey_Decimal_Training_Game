@@ -246,7 +246,7 @@ namespace JonathanPolakowPROG7312POE
             Panel ClosestPanel = PanelDistances.First(pair => pair.Value == PanelDistances.Values.Min()).Key;
             book.Location = ClosestPanel.Location;
 
-            sounds.PlaySound("BookPlace");
+            sounds.PlayBookPlace("BookPlace");
             FilterRemaining();
             CheckOrder();
          }
@@ -419,7 +419,7 @@ namespace JonathanPolakowPROG7312POE
 
             _Awards.AddNewEntry(timeLimit, countDown);
 
-            sounds.PlaySound("Success");
+            sounds.PlaySuccess("Success");
             MessageBox.Show("You Pass");
 
             foreach (Panel book in Books)
@@ -445,7 +445,7 @@ namespace JonathanPolakowPROG7312POE
          try
          {
             tmrCountdown.Enabled = false;
-            sounds.PlaySound("Fail");
+            sounds.PlaySuccess("Fail");
             MessageBox.Show("You Failed");
 
             foreach (Panel book in Books)

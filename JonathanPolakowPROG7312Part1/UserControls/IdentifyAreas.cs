@@ -254,7 +254,7 @@ namespace JonathanPolakowPROG7312POE
 
             this.Invoke((Action)(() =>
             {
-               sounds.PlaySound("BookPlace");
+               sounds.PlayBookPlace("BookPlace");
             }));
 
             FilterRemaining();
@@ -446,7 +446,7 @@ namespace JonathanPolakowPROG7312POE
 
             this._Awards.AddNewEntry(timeLimit, countDown);
 
-            this.Invoke((Action)(() => sounds.PlaySound("Success")));
+            this.Invoke((Action)(() => sounds.PlaySuccess("Success")));
 
             MessageBox.Show("You Pass");
 
@@ -474,7 +474,7 @@ namespace JonathanPolakowPROG7312POE
          {
             this.tmrCountdown.Enabled = false;
 
-            this.Invoke((Action)(() => sounds.PlaySound("Fail")));
+            this.Invoke((Action)(() => sounds.PlaySuccess("Fail")));
 
             MessageBox.Show("You Failed");
 

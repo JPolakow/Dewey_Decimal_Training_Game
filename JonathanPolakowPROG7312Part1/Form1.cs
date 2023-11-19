@@ -42,7 +42,7 @@ namespace JonathanPolakowPROG7312POE
       /// </summary>
       private async void PlayMusic()
       {
-      //   playMusic.PlayMusicMethod();
+         playMusic.PlayMusicMethod();
       }
 
       //-------------------------------------------------------------------------------------------

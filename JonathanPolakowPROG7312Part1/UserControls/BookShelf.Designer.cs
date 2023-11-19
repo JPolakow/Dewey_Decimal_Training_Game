@@ -312,7 +312,7 @@
          this.lblCountdown.BackColor = System.Drawing.Color.Transparent;
          this.lblCountdown.Font = new System.Drawing.Font("Monotype Corsiva", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.lblCountdown.ForeColor = System.Drawing.SystemColors.ControlLight;
-         this.lblCountdown.Location = new System.Drawing.Point(660, 41);
+         this.lblCountdown.Location = new System.Drawing.Point(663, 20);
          this.lblCountdown.Name = "lblCountdown";
          this.lblCountdown.Size = new System.Drawing.Size(32, 26);
          this.lblCountdown.TabIndex = 32;
@@ -489,9 +489,9 @@
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.BackColor = System.Drawing.Color.Transparent;
+         this.Controls.Add(this.lblCountdown);
          this.Controls.Add(this.btnExit);
          this.Controls.Add(this.btnReset);
-         this.Controls.Add(this.lblCountdown);
          this.Controls.Add(this.pgbProgress);
          this.Controls.Add(this.Book1);
          this.Controls.Add(this.Book9);

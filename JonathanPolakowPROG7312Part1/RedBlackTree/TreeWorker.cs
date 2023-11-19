@@ -83,8 +83,10 @@ namespace JonathanPolakowPROG7312POE.RedBlackTree
          string correctsecondlevelnumber = correctAnswer.Substring(1, 1);
          int correctsecondlevelnumberint = int.Parse(correctsecondlevelnumber);
 
+         //+ 1 so that it wont use a 0
          TreeNode<DeweyModel> randomthirdbasedoncorrect = (getRandomParent(topLevelNode, correctsecondlevelnumberint + 1));
          //thisl while is here as there are nodes in the tree with between 10 and 8 chilren, thus ther are cases where it tried to find a child at the 10th pos but it does not exisit
+         //when this happens it will retry using the lower value
          while (randomthirdbasedoncorrect == null)
             randomthirdbasedoncorrect = (getRandomParent(topLevelNode, correctsecondlevelnumberint));
 

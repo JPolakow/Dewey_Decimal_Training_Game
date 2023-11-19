@@ -12,6 +12,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -48,7 +49,7 @@ namespace JonathanPolakowPROG7312POE.UserControls
       /// <summary>
       /// timer for the countdown
       /// </summary>
-      private Timer tmrCountdown;
+      private System.Windows.Forms.Timer tmrCountdown;
       /// <summary>
       /// instance of the worker class made for this game
       /// </summary>
@@ -401,7 +402,7 @@ namespace JonathanPolakowPROG7312POE.UserControls
 
             this.Invoke((Action)(() =>
             {
-               sounds.PlaySound("BookPlace");
+               sounds.PlayBookPlace("BookPlace");
             }));
 
             //FilterRemaining();
@@ -554,6 +555,7 @@ namespace JonathanPolakowPROG7312POE.UserControls
 
                if (bookPos == whichIsCorrect)
                {
+                  //next stage
                   stage++;
                   if (stage == 3)
                   {
@@ -567,6 +569,7 @@ namespace JonathanPolakowPROG7312POE.UserControls
                }
                else
                {
+                  //restart with new question
                   if (this.ParentForm is Form1 mainForm)
                   {
                      mainForm.OpenGame();
@@ -597,7 +600,7 @@ namespace JonathanPolakowPROG7312POE.UserControls
 
             this._Awards.AddNewEntry(timeLimit, countDown);
 
-            this.Invoke((Action)(() => sounds.PlaySound("Success")));
+            this.Invoke((Action)(() => sounds.PlaySuccess("Success")));
 
             MessageBox.Show("You Pass");
 
@@ -623,7 +626,7 @@ namespace JonathanPolakowPROG7312POE.UserControls
          {
             this.tmrCountdown.Enabled = false;
 
-            this.Invoke((Action)(() => sounds.PlaySound("Fail")));
+            this.Invoke((Action)(() => sounds.PlaySuccess("Fail")));
 
             MessageBox.Show("You Failed");
 

@@ -19,6 +19,7 @@ namespace CodeTester.RedBackTree
       {
          try
          {
+            //the csv file in the bin/debug folder, its then inside a further resorces folder i created
             string filePath = @"resorces//dewey.csv";
 
             //generic top level node used to sotre all the dewey decimals

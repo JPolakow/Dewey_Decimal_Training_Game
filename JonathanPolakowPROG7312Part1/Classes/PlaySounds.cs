@@ -23,7 +23,7 @@ namespace JonathanPolakowPROG7312POE
          waveOutEvent = new WaveOutEvent();
       }
 
-      public async Task PlaySound(string fileName)
+      public async Task PlayBookPlace(string fileName)
       {
          try
          {
@@ -58,33 +58,31 @@ namespace JonathanPolakowPROG7312POE
          }
       }
 
-
-
-      // private WMPLib.WindowsMediaPlayer WMPPlaySound;
+      private WMPLib.WindowsMediaPlayer WMPPlaySound1;
 
       //-------------------------------------------------------------------------------------------
       /// <summary>
       /// async method to play a sound effect
       /// </summary>
       /// <param name="url"></param>
-      /*public async void PlaySound(string url)
+      public async void PlaySuccess(string url)
       {
          try
          {
-            if (WMPPlaySound == null)
+            if (WMPPlaySound1 == null)
             {
-               WMPPlaySound = new WMPLib.WindowsMediaPlayer();
+               WMPPlaySound1 = new WMPLib.WindowsMediaPlayer();
             }
 
             await Task.Run(() =>
             {
-               if (WMPPlaySound.playState == WMPLib.WMPPlayState.wmppsPlaying)
+               if (WMPPlaySound1.playState == WMPLib.WMPPlayState.wmppsPlaying)
                {
                   return;
                }
 
-               WMPPlaySound.URL = url + ".mp3";
-               WMPPlaySound.controls.play();
+               WMPPlaySound1.URL = url + ".mp3";
+               WMPPlaySound1.controls.play();
             });
 
          }
@@ -95,6 +93,6 @@ namespace JonathanPolakowPROG7312POE
             //This method plays sound effects, thus it is called alot, if a thredding or other issue happens then this catch prevents a crash 
             //displaying a popup is overkill and will disrupt the user experiance, not playing a sound effect is a better outcome
          }
-      }*/
+      }
    }
 }

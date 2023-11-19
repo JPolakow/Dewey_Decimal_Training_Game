@@ -52,9 +52,9 @@
          // btnExit
          // 
          this.btnExit.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btnExit.Location = new System.Drawing.Point(40, 32);
+         this.btnExit.Location = new System.Drawing.Point(3, 452);
          this.btnExit.Name = "btnExit";
-         this.btnExit.Size = new System.Drawing.Size(49, 28);
+         this.btnExit.Size = new System.Drawing.Size(79, 28);
          this.btnExit.TabIndex = 35;
          this.btnExit.Text = "EXIT";
          this.btnExit.UseVisualStyleBackColor = true;
@@ -63,9 +63,9 @@
          // btnReset
          // 
          this.btnReset.Font = new System.Drawing.Font("MV Boli", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btnReset.Location = new System.Drawing.Point(0, 66);
+         this.btnReset.Location = new System.Drawing.Point(3, 483);
          this.btnReset.Name = "btnReset";
-         this.btnReset.Size = new System.Drawing.Size(108, 30);
+         this.btnReset.Size = new System.Drawing.Size(79, 30);
          this.btnReset.TabIndex = 36;
          this.btnReset.Text = "Restart";
          this.btnReset.UseVisualStyleBackColor = true;
@@ -86,7 +86,7 @@
          this.lblCountdown.BackColor = System.Drawing.Color.Transparent;
          this.lblCountdown.Font = new System.Drawing.Font("Monotype Corsiva", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.lblCountdown.ForeColor = System.Drawing.SystemColors.ControlLight;
-         this.lblCountdown.Location = new System.Drawing.Point(209, 36);
+         this.lblCountdown.Location = new System.Drawing.Point(370, 29);
          this.lblCountdown.Name = "lblCountdown";
          this.lblCountdown.Size = new System.Drawing.Size(32, 26);
          this.lblCountdown.TabIndex = 38;
