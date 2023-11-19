@@ -569,6 +569,8 @@ namespace JonathanPolakowPROG7312POE.UserControls
                }
                else
                {
+                  this.tmrCountdown.Enabled = false;
+                  
                   //restart with new question
                   if (this.ParentForm is Form1 mainForm)
                   {
