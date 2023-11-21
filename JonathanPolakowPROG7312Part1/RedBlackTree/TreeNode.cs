@@ -9,6 +9,8 @@ using System.Linq;
 
 namespace CodeTester
 {
+
+   //this class was porvided by my lecturer Dr Rudolf Holzhausen on VCLearn.
    public class TreeNode<T> : IEnumerable<TreeNode<T>>
    {
       public T Data { get; set; }

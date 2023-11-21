@@ -6,6 +6,7 @@ using CodeTester;
 using CodeTester.RedBackTree;
 using JonathanPolakowPROG7312POE.RedBlackTree;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -440,7 +441,7 @@ namespace JonathanPolakowPROG7312POE.UserControls
                newAnswerLabel.Text = tops[i].ToString();
                newAnswerLabel.Font = new Font(Label.DefaultFont, FontStyle.Bold);
                newAnswerLabel.ForeColor = Color.Black;
-               newAnswerLabel.Top = TopShelves[i].Height / 2 - newAnswerLabel.Height -30;
+               newAnswerLabel.Top = TopShelves[i].Height / 2 - newAnswerLabel.Height - 30;
                newAnswerLabel.Height = newAnswerLabel.Height + 5;
                newAnswerLabel.Enabled = false;
                newAnswerLabel.Left = 5;
@@ -519,10 +520,9 @@ namespace JonathanPolakowPROG7312POE.UserControls
             result.Add(newOne);
          }
 
-         //adding the correct formatted answer into the list at a random pos
-         //then save this pos
-         int pos = random.Next(0, 4);
-         result.Insert(pos, answer);
+         result.Add(answer);
+         result.Sort();
+         int pos = result.IndexOf(answer);
          whichIsCorrect = pos;
 
          return result;
@@ -570,7 +570,7 @@ namespace JonathanPolakowPROG7312POE.UserControls
                else
                {
                   this.tmrCountdown.Enabled = false;
-                  
+
                   //restart with new question
                   if (this.ParentForm is Form1 mainForm)
                   {

@@ -175,7 +175,7 @@
          this.pnlAnswer3.BackColor = System.Drawing.Color.Transparent;
          this.pnlAnswer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlAnswer3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.pnlAnswer3.Location = new System.Drawing.Point(190, 198);
+         this.pnlAnswer3.Location = new System.Drawing.Point(190, 214);
          this.pnlAnswer3.Margin = new System.Windows.Forms.Padding(1);
          this.pnlAnswer3.Name = "pnlAnswer3";
          this.pnlAnswer3.Size = new System.Drawing.Size(100, 57);
@@ -186,7 +186,7 @@
          this.pnlAnswer2.BackColor = System.Drawing.Color.Transparent;
          this.pnlAnswer2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlAnswer2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.pnlAnswer2.Location = new System.Drawing.Point(190, 142);
+         this.pnlAnswer2.Location = new System.Drawing.Point(190, 150);
          this.pnlAnswer2.Margin = new System.Windows.Forms.Padding(1);
          this.pnlAnswer2.Name = "pnlAnswer2";
          this.pnlAnswer2.Size = new System.Drawing.Size(100, 57);
@@ -209,7 +209,7 @@
          this.pnlBook3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
          this.pnlBook3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlBook3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.pnlBook3.Location = new System.Drawing.Point(155, 206);
+         this.pnlBook3.Location = new System.Drawing.Point(122, 222);
          this.pnlBook3.Margin = new System.Windows.Forms.Padding(1);
          this.pnlBook3.Name = "pnlBook3";
          this.pnlBook3.Size = new System.Drawing.Size(100, 57);
@@ -221,7 +221,7 @@
          this.pnlBook2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
          this.pnlBook2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlBook2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.pnlBook2.Location = new System.Drawing.Point(155, 147);
+         this.pnlBook2.Location = new System.Drawing.Point(122, 163);
          this.pnlBook2.Margin = new System.Windows.Forms.Padding(1);
          this.pnlBook2.Name = "pnlBook2";
          this.pnlBook2.Size = new System.Drawing.Size(100, 57);
@@ -233,7 +233,7 @@
          this.pnlBook4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
          this.pnlBook4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlBook4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.pnlBook4.Location = new System.Drawing.Point(155, 265);
+         this.pnlBook4.Location = new System.Drawing.Point(122, 281);
          this.pnlBook4.Margin = new System.Windows.Forms.Padding(1);
          this.pnlBook4.Name = "pnlBook4";
          this.pnlBook4.Size = new System.Drawing.Size(100, 57);
@@ -244,7 +244,7 @@
          this.pnlAnswers4.BackColor = System.Drawing.Color.Transparent;
          this.pnlAnswers4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlAnswers4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.pnlAnswers4.Location = new System.Drawing.Point(190, 254);
+         this.pnlAnswers4.Location = new System.Drawing.Point(190, 278);
          this.pnlAnswers4.Margin = new System.Windows.Forms.Padding(1);
          this.pnlAnswers4.Name = "pnlAnswers4";
          this.pnlAnswers4.Size = new System.Drawing.Size(100, 57);
@@ -256,7 +256,7 @@
          this.pnlBook1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
          this.pnlBook1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.pnlBook1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-         this.pnlBook1.Location = new System.Drawing.Point(155, 88);
+         this.pnlBook1.Location = new System.Drawing.Point(122, 104);
          this.pnlBook1.Margin = new System.Windows.Forms.Padding(1);
          this.pnlBook1.Name = "pnlBook1";
          this.pnlBook1.Size = new System.Drawing.Size(100, 57);
